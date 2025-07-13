@@ -1,3 +1,6 @@
+// Este archivo simplemente inicia el servidor con app.listen()
+
+
 import app from './app';
 
 const PORT = process.env.PORT || 3000;
