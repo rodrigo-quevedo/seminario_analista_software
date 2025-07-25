@@ -3,25 +3,22 @@
 // Tambien permite ejecutar middlewares con app.use()
 
 import express from "express";
-import { Request, Response } from "express";
+
+import logTime from "./middleware/logTime";
+import errorHandler from "./middleware/errorHandler";
 
 import router from './routes/index'
-import logTime from "./middleware/logTime";
 
 
 
 const app = express();
 
-console.log('primero va esto')
-app.use(logTime)
+app.use(logTime) // Mostrar fechahora en que la request llega al servidor
+app.use(express.json());//Parsear el req.body, es obligatorio que venga en formato JSON
 
-console.log('luego esto otro')
-app.use(router)
+app.use(router) // Manejar endpoints de la API
 
+app.use(errorHandler) // Manejo de errores. Obligatorio hacer catch del error en el endpoint y llamar a next()
 
-console.log('y al final, esto')
-app.get('/', (req: Request, res: Response) => {
-  res.send('Hello, TypeScript + Express!');
-});
 
 export default app;
