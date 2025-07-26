@@ -1,41 +1,30 @@
 import { Request, Response, Router } from "express";
 import { DatosPago } from "../types/pagos";
+import { getMsjRequerido } from "../utils/mensajesError/mensajesError";
 
 
 
-const router = Router()
+const router = Router();
 
 router.post('/', (req: Request, res: Response) =>
 {
-    if (req.body === undefined || req.body === null) throw new Error("No hay un JSON valido en la HTTP request Body.")
+    if (req.body === undefined || req.body === null) throw new Error("No hay un JSON valido en la HTTP request Body.");
 
-    const datos = req.body as DatosPago
+    const datosPago = req.body as DatosPago;
 
-    //Comprobar que todos los datos estan llenos
-    const propiedadesNoLlenadas: string[] = []
-    Object.entries(datos).forEach((propiedadValor)=>{ 
-        //[0]-> propiedad, [1]-> valor
-        if (propiedadValor[1] === undefined || propiedadValor[1] === null)
-            propiedadesNoLlenadas.push(propiedadValor[0])
-    })
-    if (propiedadesNoLlenadas.length !== 0) throw new Error("No se ingresaron todos los datos de pago.")
-        
-        
+    //Validar inputs 
+    if (datosPago.cantidadCuotas == null) throw new Error(getMsjRequerido("cantidadCuotas"));
+    if (datosPago.codigoSeguridad == null) throw new Error(getMsjRequerido("codigoSeguridad"));
+    if (datosPago.documento == null) throw new Error(getMsjRequerido("documento"));
+    if (datosPago.idTarjeta == null) throw new Error(getMsjRequerido("idTarjeta"));
+    if (datosPago.mail == null) throw new Error(getMsjRequerido("mail"));
+    if (datosPago.titular == null) throw new Error(getMsjRequerido("titular"));
+    if (datosPago.vencimiento == null) throw new Error(getMsjRequerido("vencimiento"));
 
 
+    console.log("Datos enviados:", datosPago);
 
-    // const datos = req.body
-    console.log("Datos enviados:", datos)
-    
-
-
-
-    // Sin el express.json() parser, el HTTP request Body se lee asi:
-    // let data = '';
-    // req.on('data', chunk => { data += chunk; });
-    // req.on('end', () => {console.log("Datos enviados: ", data)});
-
-    res.send("ok")
+    res.send("ok");
 })
 
 
