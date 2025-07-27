@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "main": "dist/server.js",
   "scripts": {
-    "dev": "ts-node src/server.ts",
-    "build": "tsc",
+    "dev": "node scripts/updatePathsAliases/updatePathsAliases.js && ts-node src/server.ts",
+    "build": "node scripts/updatePathsAliases/updatePathsAliases.js && tsc",
     "start": "node dist/server.js"
   },
   "keywords": [],
@@ -12,12 +12,20 @@
   "license": "MIT",
   "description": "Backend server API",
   "dependencies": {
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "module-alias": "^2.2.3"
   },
   "devDependencies": {
     "@types/express": "^5.0.3",
     "@types/node": "^24.0.13",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3"
+  },
+  "_moduleAliases": {
+    "@controllers": "./src/controllers",
+    "@routes": "./src/routes",
+    "@middlewares": "./src/middlewares",
+    "@types": "./src/types",
+    "@utils": "./src/utils"
   }
 }

@@ -3,9 +3,9 @@
 // Tambien permite ejecutar middlewares con app.use()
 
 import express from "express";
-import logTime from "./middleware/logTime";
-import errorHandler from "./middleware/errorHandler";
-import router from './routes/index';
+import {logTime} from "@middlewares/logTime";
+import {errorHandler} from "@middlewares/errorHandler";
+import router from '@routes/index';
 
 
 
