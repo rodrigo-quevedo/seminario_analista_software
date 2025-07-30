@@ -1,7 +1,6 @@
 import { Request, Response} from "express";
 
 
-//IMPORTANTE: En Node.js hay que usar punto (.) para los decimales (en este caso los centavos del precio)
 //Supongamos que se hace un GET a /productos/12?precio_unitario=56518.39 
 export function getProducto(req: Request, res: Response) {
     console.log(req.query)

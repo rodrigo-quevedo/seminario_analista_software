@@ -14,7 +14,8 @@
         "@routes/*": ["./src/routes/*"],
         "@middlewares/*": ["./src/middlewares/*"],
         "@customTypes/*": ["./src/types/*"],
-        "@utils/*": ["./src/utils/*"] 
+        "@utils/*": ["./src/utils/*"] ,
+        "@validations/*": ["./src/validations/*"]
     }
   }
 }
