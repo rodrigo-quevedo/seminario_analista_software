@@ -13,7 +13,7 @@
         "@controllers/*": ["./src/controllers/*"],
         "@routes/*": ["./src/routes/*"],
         "@middlewares/*": ["./src/middlewares/*"],
-        "@types/*": ["./src/types/*"],
+        "@customTypes/*": ["./src/types/*"],
         "@utils/*": ["./src/utils/*"] 
     }
   }

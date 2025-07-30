@@ -20,12 +20,5 @@
     "@types/node": "^24.0.13",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3"
-  },
-  "_moduleAliases": {
-    "@controllers": "./src/controllers",
-    "@routes": "./src/routes",
-    "@middlewares": "./src/middlewares",
-    "@types": "./src/types",
-    "@utils": "./src/utils"
   }
 }
