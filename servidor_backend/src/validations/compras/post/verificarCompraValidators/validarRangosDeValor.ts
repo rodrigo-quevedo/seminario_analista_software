@@ -1,10 +1,11 @@
 import { DatosCompra } from "@customTypes/compra";
-import { getMsjMayorCero, getMsjMayorIgualCero } from "@utils/mensajesError/mensajesError";
+import MayorCeroError from "../../../../errors/400/ValueRangeErrors/MayorCeroError";
+import MayorIgualCeroError from "../../../../errors/400/ValueRangeErrors/MayorIgualCeroError";
 
 export default function validarRangosDeValor(datosCompra: DatosCompra){
     
-    if (datosCompra.cantidad <= 0) throw new Error(getMsjMayorCero("cantidad"));
+    if (datosCompra.cantidad <= 0) throw new MayorCeroError("cantidad");
     
-    if (datosCompra.descuento < 0) throw new Error(getMsjMayorIgualCero("cantidad"));
+    if (datosCompra.descuento < 0) throw new MayorIgualCeroError("cantidad");
 
 }
