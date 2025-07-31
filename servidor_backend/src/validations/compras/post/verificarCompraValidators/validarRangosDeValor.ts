@@ -6,6 +6,6 @@ export default function validarRangosDeValor(datosCompra: DatosCompra){
     
     if (datosCompra.cantidad <= 0) throw new MayorCeroError("cantidad");
     
-    if (datosCompra.descuento < 0) throw new MayorIgualCeroError("cantidad");
+    if (datosCompra.descuento < 0) throw new MayorIgualCeroError("descuento");
 
 }
