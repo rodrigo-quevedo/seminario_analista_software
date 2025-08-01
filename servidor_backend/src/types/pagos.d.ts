@@ -4,6 +4,6 @@ export interface DatosPago {
     codigoSeguridad: string, 
     titular: string, 
     documento: string, 
-    cantidadCuotas: string, 
+    cantidadCuotas: number, 
     mail: string
 }

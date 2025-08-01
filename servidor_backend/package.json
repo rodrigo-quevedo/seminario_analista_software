@@ -27,6 +27,7 @@
     "@middlewares": "./src/middlewares",
     "@customTypes": "./src/types",
     "@utils": "./src/utils",
-    "@validations": "./src/validations"
+    "@validations": "./src/validations",
+    "@errors": "./src/errors"
   }
 }

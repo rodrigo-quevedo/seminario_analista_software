@@ -1,6 +1,6 @@
 import { DatosCompra } from "@customTypes/compra";
-import TypeNumberError from "../../../../errors/400/InvalidTypeErrors/TypeNumberError";
-import TypeIntegerError from "../../../../errors/400/InvalidTypeErrors/TypeIntegerError";
+import TypeNumberError from "@errors/400/InvalidTypeErrors/TypeNumberError";
+import TypeIntegerError from "@errors/400/InvalidTypeErrors/TypeIntegerError";
 
 export default function validarTypes(datosCompra: DatosCompra){
     

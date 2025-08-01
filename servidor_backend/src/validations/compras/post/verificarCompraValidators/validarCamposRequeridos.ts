@@ -1,5 +1,5 @@
 import { DatosCompra } from "@customTypes/compra";
-import FieldRequiredError from "../../../../errors/400/FieldRequiredError";
+import FieldRequiredError from "@errors/400/FieldRequiredError";
 
 export default function validarCamposRequeridos(datosCompra: DatosCompra){
     

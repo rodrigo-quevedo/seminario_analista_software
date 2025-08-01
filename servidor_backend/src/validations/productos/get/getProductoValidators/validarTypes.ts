@@ -1,5 +1,5 @@
-import TypeIntegerError from "../../../../errors/400/InvalidTypeErrors/TypeIntegerError";
-import TypeNumberError from "../../../../errors/400/InvalidTypeErrors/TypeNumberError";
+import TypeIntegerError from "@errors/400/InvalidTypeErrors/TypeIntegerError";
+import TypeNumberError from "@errors/400/InvalidTypeErrors/TypeNumberError";
 
 
 export default function validarTypes(idProducto: number){

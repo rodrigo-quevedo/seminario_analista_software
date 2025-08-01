@@ -1,6 +1,6 @@
 import { DatosCompra } from "@customTypes/compra";
-import MayorCeroError from "../../../../errors/400/ValueRangeErrors/MayorCeroError";
-import MayorIgualCeroError from "../../../../errors/400/ValueRangeErrors/MayorIgualCeroError";
+import MayorCeroError from "@errors/400/ValueRangeErrors/MayorCeroError";
+import MayorIgualCeroError from "@errors/400/ValueRangeErrors/MayorIgualCeroError";
 
 export default function validarRangosDeValor(datosCompra: DatosCompra){
     
