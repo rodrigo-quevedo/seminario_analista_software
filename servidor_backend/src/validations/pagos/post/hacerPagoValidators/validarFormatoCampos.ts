@@ -23,10 +23,10 @@ export default function validarFormatoCampos(datosPago: DatosPago){
 
 
     datosPago.titular = datosPago.titular.toLowerCase();//titular tambien es case insensitive
-    if (! /^[a-záéíóúñü ]{4,50}$/.test(datosPago.titular)) throw new InvalidStringFormatError("titular", "solo letras, incluyendo la 'Ñ'. Caracteres especiales:  (espacio/spacebar). No se aceptan otros caracteres");
+    if (! /^[a-záéíóúñü ]{4,50}$/.test(datosPago.titular)) throw new InvalidStringFormatError("titular", "solo letras, incluyendo la 'Ñ'. Caracteres especiales:  (espacio/spacebar). No se aceptan otros caracteres. Longitud entre 4 y 50 caracteres");
 
 
-    if (! /^\d{2}\/\d{3}$/.test(datosPago.vencimiento)) throw new InvalidStringFormatError("vencimiento", "MM/AA, donde M y A representan digitos del 0 al 9");
+    if (! /^\d{2}\/\d{2}$/.test(datosPago.vencimiento)) throw new InvalidStringFormatError("vencimiento", "MM/AA, donde M y A representan digitos del 0 al 9");
 
     if (! validarVencimiento(datosPago.vencimiento)) throw new TarjetaVencidaError("vencimiento");
 
