@@ -17,7 +17,8 @@
         "@utils/*": ["./src/utils/*"] ,
         "@validations/*": ["./src/validations/*"],
         "@errors/*": ["./src/errors/*"],
-        "@config/*": ["./src/config/*"]
+        "@config/*": ["./src/config/*"],
+        "@models/*": ["./src/models/*"]
     }
   }
 }
