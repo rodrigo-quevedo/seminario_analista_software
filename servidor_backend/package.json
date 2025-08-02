@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "main": "dist/server.js",
   "scripts": {
-    "dev": "node scripts/updatePathsAliases/updatePathsAliases.js && ts-node src/server.ts",
+    "dev": "node scripts/updatePathsAliases/updatePathsAliases.js && node --env-file=src/.env -r ts-node/register src/server.ts",
     "build": "node scripts/updatePathsAliases/updatePathsAliases.js && tsc",
-    "start": "node dist/server.js"
+    "start": "node --env-file=src/.env dist/server.js"
   },
   "keywords": [],
   "author": "Quevedo, Rodrigo Martín (https://github.com/rodrigo-quevedo)",
