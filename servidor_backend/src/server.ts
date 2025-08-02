@@ -2,6 +2,9 @@
 
 require('module-alias/register')
 import app from './app';
+import {conectarBD} from '@config/db';
+
+conectarBD();
 
 const PORT = process.env.PORT || 3000;
 

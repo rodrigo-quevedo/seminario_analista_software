@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "main": "dist/server.js",
   "scripts": {
-    "dev": "node scripts/updatePathsAliases/updatePathsAliases.js && node --env-file=src/.env -r ts-node/register src/server.ts",
+    "dev": "node scripts/updatePathsAliases/updatePathsAliases.js && node --env-file=.env -r ts-node/register src/server.ts",
     "build": "node scripts/updatePathsAliases/updatePathsAliases.js && tsc",
-    "start": "node --env-file=src/.env dist/server.js"
+    "start": "node --env-file=.env dist/server.js"
   },
   "keywords": [],
   "author": "Quevedo, Rodrigo Martín (https://github.com/rodrigo-quevedo)",
@@ -13,7 +13,8 @@
   "description": "Backend server API",
   "dependencies": {
     "express": "^5.1.0",
-    "module-alias": "^2.2.3"
+    "module-alias": "^2.2.3",
+    "mongoose": "^8.17.0"
   },
   "devDependencies": {
     "@types/express": "^5.0.3",
@@ -28,6 +29,7 @@
     "@customTypes": "./src/types",
     "@utils": "./src/utils",
     "@validations": "./src/validations",
-    "@errors": "./src/errors"
+    "@errors": "./src/errors",
+    "@config": "./src/config"
   }
 }

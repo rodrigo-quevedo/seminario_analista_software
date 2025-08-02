@@ -16,7 +16,8 @@
         "@customTypes/*": ["./src/types/*"],
         "@utils/*": ["./src/utils/*"] ,
         "@validations/*": ["./src/validations/*"],
-        "@errors/*": ["./src/errors/*"]
+        "@errors/*": ["./src/errors/*"],
+        "@config/*": ["./src/config/*"]
     }
   }
 }
