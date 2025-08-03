@@ -20,6 +20,8 @@
         "@config/*": ["./src/config/*"],
         "@models/*": ["./src/models/*"],
         "@daos/*": ["./src/DAOs/*"]
-    }
+    },
+
+    "resolveJsonModule": true
   }
 }
