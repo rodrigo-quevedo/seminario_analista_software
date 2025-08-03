@@ -4,7 +4,7 @@ export default interface Usuario {
     id: string, 
 
     nombreCompleto: string,
-    mail: string,
+    email: string,
     password: string, //es mejor evitar caracteres no-ASCII como la 'ñ', por eso 'password' en vez de 'contraseña'
 
     puntos: number

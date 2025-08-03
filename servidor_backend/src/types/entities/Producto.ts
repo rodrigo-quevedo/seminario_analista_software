@@ -1,4 +1,4 @@
-export default interface Usuario {
+export default interface Producto {
     id: string, 
 
     nombre: string,
@@ -7,5 +7,5 @@ export default interface Usuario {
     
     stock: number,
 
-    precio: number
+    precioUnitario: number
 }

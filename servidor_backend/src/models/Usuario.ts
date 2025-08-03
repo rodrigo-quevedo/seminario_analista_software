@@ -1,7 +1,9 @@
 import mongoose from "mongoose";
+import Usuario from "@customTypes/entities/Usuario";
 
-//se va a usar el ObjectId() de cada usuario (creado automaticamente por MongoDB) en vez de un campo ID.
-const Usuario = mongoose.model("Usuario", new mongoose.Schema({
+
+//s
+const UsuarioModel = mongoose.model<Usuario>("Usuario", new mongoose.Schema<Usuario>({
     nombreCompleto: {type: String, required: true},
     email: {type: String, required: true, unique: true},
     password: {type: String, required: true},
@@ -17,4 +19,4 @@ const Usuario = mongoose.model("Usuario", new mongoose.Schema({
 }))
 
 
-export default Usuario;
+export default UsuarioModel;

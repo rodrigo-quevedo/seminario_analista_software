@@ -1,23 +1,34 @@
 import mongoose from "mongoose";
+import Producto from "@customTypes/entities/Producto";
 
-//se va a usar el ObjectId() de cada producto (creado automaticamente por MongoDB) en vez de un campo ID.
-const Producto = mongoose.model("Producto", new mongoose.Schema({
-    nombre: {type: String, required: true},
-    descripcion: {type: String, required: true},
-    urlFoto: {type: String, required: true},
-    
-    stock: {type: mongoose.SchemaTypes.Int32, required: true},
+const ProductoSchema =  new mongoose.Schema<Producto>(
+    {
+        nombre: {type: String, required: true},
+        descripcion: {type: String, required: true},
+        urlFoto: {type: String, required: true},
+        
+        stock: {type: Number, required: true},
 
-    precioUnitario: {
-        type: Number, //el tipo Number es el type number de JavaScript, y permite floats y enteros.
-        required: true,
-        validate: {
-            validator: (v: number) => /^\d+(\.\d{1,2})?$/.test(v.toString()), //esta regex permite el numero con o sin centavos cuando se usa el type number de JavaScript. Ejemplo: si tengo $10, en JavaScript es 10 pero no 10.00, por eso la regex debe permitir los enteros. Si tengo $49,84 o $309849.2 la regex tambien los permite.
-            message: () => `El precio unitario debe tener a lo sumo 2 decimales`,
+        precioUnitario: {
+            type: Number, //el tipo Number es el type 'number' de JavaScript, y permite floats y enteros.
+            required: true,
+            validate: {
+                validator: (v: number) => /^\d+(\.\d{1,2})?$/.test(v.toString()), //esta regex permite el numero con o sin centavos cuando se usa el type number de JavaScript. Ejemplo: si tengo $10, en JavaScript es 10 pero no 10.00, por eso la regex debe permitir los enteros. Si tengo $49,84 o $309849.2 la regex tambien los permite.
+                message: () => `El precio unitario debe tener a lo sumo 2 decimales`,
+            }
         }
     },
-    
-}))
+    {
+        toJSON: { virtuals: true },
+        toObject: { virtuals: true },
+    }
+);
+
+//Mapear ObjectId que viene por defecto (_id) con el ID de la entidad:
+ProductoSchema.virtual('id').get(function () {
+  return this._id.toString();
+});
 
 
-export default Producto;
+const ProductoModel = mongoose.model<Producto>("Producto", ProductoSchema);
+export default ProductoModel;
