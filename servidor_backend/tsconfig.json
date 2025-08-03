@@ -18,7 +18,8 @@
         "@validations/*": ["./src/validations/*"],
         "@errors/*": ["./src/errors/*"],
         "@config/*": ["./src/config/*"],
-        "@models/*": ["./src/models/*"]
+        "@models/*": ["./src/models/*"],
+        "@daos/*": ["./src/DAOs/*"]
     }
   }
 }

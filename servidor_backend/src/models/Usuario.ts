@@ -1,10 +1,10 @@
 import mongoose from "mongoose";
 
 //se va a usar el ObjectId() de cada usuario (creado automaticamente por MongoDB) en vez de un campo ID.
-const usuariosModel = mongoose.model("usuarios", new mongoose.Schema({
+const Usuario = mongoose.model("Usuario", new mongoose.Schema({
     nombreCompleto: {type: String, required: true},
     email: {type: String, required: true, unique: true},
-    contraseña: {type: String, required: true},
+    password: {type: String, required: true},
 
     puntos: {
         type: Number, //el tipo Number es el type number de JavaScript, y permite floats y enteros.
@@ -17,4 +17,4 @@ const usuariosModel = mongoose.model("usuarios", new mongoose.Schema({
 }))
 
 
-export default usuariosModel;
+export default Usuario;

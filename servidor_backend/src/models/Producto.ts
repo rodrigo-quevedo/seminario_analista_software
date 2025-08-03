@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 //se va a usar el ObjectId() de cada producto (creado automaticamente por MongoDB) en vez de un campo ID.
-const productosModel = mongoose.model("productos", new mongoose.Schema({
+const Producto = mongoose.model("Producto", new mongoose.Schema({
     nombre: {type: String, required: true},
     descripcion: {type: String, required: true},
     urlFoto: {type: String, required: true},
@@ -20,4 +20,4 @@ const productosModel = mongoose.model("productos", new mongoose.Schema({
 }))
 
 
-export default productosModel;
+export default Producto;

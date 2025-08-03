@@ -10,9 +10,6 @@ mongoose.connection.on('error', err => console.error(new Date().toISOString(),'â
 export async function conectarBD() {
     try {
         await mongoose.connect(process.env.MONGODB_URI!);//iniciar conexion DB 
-
-        
-        mongoose.pluralize(null);//Usar los nombres de conexion tal cual estan en el codigo
     }
     catch(e: any|Error){
         let error = e as Error;
