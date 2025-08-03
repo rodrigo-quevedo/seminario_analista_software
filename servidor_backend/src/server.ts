@@ -3,8 +3,10 @@
 require('module-alias/register')
 import app from './app';
 import {conectarBD} from '@config/db';
+import productosDemo from './demo/productosDemo';
 
 conectarBD();
+productosDemo();
 
 const PORT = process.env.PORT || 3000;
 
