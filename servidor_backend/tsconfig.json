@@ -19,7 +19,8 @@
         "@errors/*": ["./src/errors/*"],
         "@config/*": ["./src/config/*"],
         "@models/*": ["./src/models/*"],
-        "@daos/*": ["./src/DAOs/*"]
+        "@daos/*": ["./src/DAOs/*"],
+        "@services/*": ["./src/services/*"]
     },
 
     "resolveJsonModule": true

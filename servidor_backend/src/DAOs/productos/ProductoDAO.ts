@@ -8,12 +8,10 @@ import DatabaseAccessError from "@errors/500/DatabaseAccessError";
 
 const ProductoDAO: IProductoDAO = {
     
-    async getProductos(): Promise<Producto[] | null> {
+    async getProductos(): Promise<Producto[]> {
 
         try{
             let productos = await ProductoModel.find().exec() as Producto[];
-            console.log("todos los productos:",productos);
-            console.log("id del primer producto:", productos[0].id);
     
             return productos;
         }
@@ -22,8 +20,15 @@ const ProductoDAO: IProductoDAO = {
         }
     },
 
-    async getProducto(id: string): Promise<Producto | null> {
-        throw new Error("Method not implemented.");
+    async getProducto(id: string): Promise<Producto> {
+        try{
+            let producto = await ProductoModel.findById(id).exec() as Producto;
+    
+            return producto;
+        }
+        catch(e){
+            throw new DatabaseAccessError(e);
+        }
     },
 
     async crearProductos(arrProductos: Producto[]): Promise<Producto[] | null> {

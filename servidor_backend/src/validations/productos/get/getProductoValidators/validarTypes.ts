@@ -1,11 +1,11 @@
-import TypeIntegerError from "@errors/400/InvalidTypeErrors/TypeIntegerError";
-import TypeNumberError from "@errors/400/InvalidTypeErrors/TypeNumberError";
+import InvalidStringFormatError from "@errors/400/InvalidFormatErrors/InvalidStringFormatError";
+import mongoose from "mongoose";
 
 
-export default function validarTypes(idProducto: number){
+
+export default function validarTypes(idProductoParam: string){
     
-    if (isNaN(idProducto))  throw new TypeNumberError("param /:idProducto");
+    if (! mongoose.Types.ObjectId.isValid(idProductoParam) ) throw new InvalidStringFormatError("request Param: id producto", "string con 24 caracteres hexadecimales");
 
-    if (!Number.isInteger(idProducto)) throw new TypeIntegerError("param /:idProducto")
 
 }

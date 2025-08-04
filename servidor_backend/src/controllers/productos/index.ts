@@ -1,2 +1,2 @@
-export * from './get/getProductos';
-export * from './get/getProducto';
+export * from './get/getProductosController';
+export * from './get/getProductoController';
