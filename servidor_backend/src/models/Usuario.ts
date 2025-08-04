@@ -2,21 +2,33 @@ import mongoose from "mongoose";
 import Usuario from "@customTypes/entities/Usuario";
 
 
-//s
-const UsuarioModel = mongoose.model<Usuario>("Usuario", new mongoose.Schema<Usuario>({
-    nombreCompleto: {type: String, required: true},
-    email: {type: String, required: true, unique: true},
-    password: {type: String, required: true},
 
-    puntos: {
-        type: Number, //el tipo Number es el type number de JavaScript, y permite floats y enteros.
-        required: true,
-        validate: {
-            validator: (v: number) => /^\d+(\.\d{1,2})?$/.test(v.toString()), //esta regex permite el numero con o sin centavos cuando se usa el type number de JavaScript. Ejemplo: si tengo 10 puntos, en JavaScript es 10 pero no 10.00, por eso la regex debe permitir los enteros. Si tengo 49,84 o 309849.2 la regex tambien los permite.
-            message: () => `La cantidad de puntos del usuario debe tener a lo sumo 2 decimales`,
+const UsuarioSchema = new mongoose.Schema<Usuario>(
+    {
+        nombreCompleto: {type: String, required: true},
+        email: {type: String, required: true, unique: true},
+        password: {type: String, required: true},
+
+        puntos: {
+            type: Number, //el tipo Number es el type number de JavaScript, y permite floats y enteros.
+            required: true,
+            validate: {
+                validator: (v: number) => /^\d+(\.\d{1,2})?$/.test(v.toString()), //esta regex permite el numero con o sin centavos cuando se usa el type number de JavaScript. Ejemplo: si tengo 10 puntos, en JavaScript es 10 pero no 10.00, por eso la regex debe permitir los enteros. Si tengo 49,84 o 309849.2 la regex tambien los permite.
+                message: () => `La cantidad de puntos del usuario debe tener a lo sumo 2 decimales`,
+            }
         }
+    },
+    {
+        toJSON: { virtuals: true },
+        toObject: { virtuals: true },
     }
-}))
 
+)
 
+//Mapear ObjectId que viene por defecto (_id) con el ID de la entidad:
+UsuarioSchema.virtual('id').get(function () {
+  return this._id.toString();
+});
+
+const UsuarioModel = mongoose.model<Usuario>("Usuario", UsuarioSchema);
 export default UsuarioModel;

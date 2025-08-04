@@ -1,0 +1,40 @@
+{
+    "usuarios": [
+    {
+        "id": "",
+        "nombreCompleto": "Lucía Fernández",
+        "email": "lucia.fernandez@example.com",
+        "password": "clave123",
+        "puntos": 120
+    },
+    {
+        "id": "",
+        "nombreCompleto": "Martín Gómez",
+        "email": "martin.gomez@example.com",
+        "password": "pass456",
+        "puntos": 85
+    },
+    {
+        "id": "",
+        "nombreCompleto": "Carla Méndez",
+        "email": "carla.mendez@example.com",
+        "password": "abc789",
+        "puntos": 200
+    },
+    {
+        "id": "",
+        "nombreCompleto": "Diego Torres",
+        "email": "diego.torres@example.com",
+        "password": "secreto321",
+        "puntos": 45
+    },
+    {
+        "id": "",
+        "nombreCompleto": "Sofía Ríos",
+        "email": "sofia.rios@example.com",
+        "password": "mypassword",
+        "puntos": 150
+    }
+]
+
+}

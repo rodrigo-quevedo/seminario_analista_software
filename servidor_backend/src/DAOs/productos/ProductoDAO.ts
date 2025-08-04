@@ -31,8 +31,8 @@ const ProductoDAO: IProductoDAO = {
         }
     },
 
-    async crearProductos(arrProductos: Producto[]): Promise<Producto[] | null> {
-        let result = await ProductoModel.insertMany(arrProductos);
+    async crearProductos(arrProductos: Producto[]): Promise<Producto[]> {
+        let result = await ProductoModel.insertMany(arrProductos) as Producto[];
 
         return result;
     }

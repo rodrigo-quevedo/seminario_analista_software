@@ -7,6 +7,6 @@ export default interface IProductoDAO {
     getProducto(id: string): Promise<Producto>;
      
     //Este metodo se usará para insertar los productos de prueba:
-    crearProductos(arrProductos: Producto[]): Promise<Producto[] | null>;
+    crearProductos(arrProductos: Producto[]): Promise<Producto[]>;
 
 }
