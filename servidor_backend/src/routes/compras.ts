@@ -1,10 +1,11 @@
 import { Router } from "express";
-import { verificarCompra } from "@controllers/compras";
+import { verificarCompraController } from "@controllers/compras";
+import simularAuth from "@middlewares/simularAuth";
 
 
 const router = Router();
 
-router.post('/verificar', verificarCompra);
+router.post('/verificar', simularAuth, verificarCompraController);
 
 
 

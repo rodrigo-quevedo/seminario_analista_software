@@ -12,6 +12,6 @@ export default async function usuariosDemo(){
         console.log("Se crearon los usuarios: ", JSON.stringify(usuariosCreados));
     }
     else {
-        console.log("Productos existentes:", JSON.stringify( usuarios?.map((usr)=>`${usr.id} - ${usr.email}`) ))
+        console.log("Usuarios existentes:", JSON.stringify( usuarios?.map((usr)=>`${usr.id} - ${usr.email}`) ))
     }
 }

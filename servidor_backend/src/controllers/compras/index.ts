@@ -1,1 +1,1 @@
-export * from './post/verificarCompra';
+export * from './post/verificarCompraController';
