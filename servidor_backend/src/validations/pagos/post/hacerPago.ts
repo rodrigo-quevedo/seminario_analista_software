@@ -1,21 +1,21 @@
-import { DatosPago } from "@customTypes/pagos";
+import { DatosCompra } from "@customTypes/pagos";
 import validarCamposRequeridos from "./hacerPagoValidators/validarCamposRequeridos";
 import validarReqBodyJson from "@validations/general/validarReqBodyJson";
 import validarTypes from "./hacerPagoValidators/validarTypes";
 import validarFormatoCampos from "./hacerPagoValidators/validarFormatoCampos";
 import trimStrings from "./hacerPagoValidators/trimStrings";
 
-export default function validarHacerPago(datosPago: DatosPago) : DatosPago{
+export default function validarHacerPago(datosCompra: DatosCompra) : DatosCompra{
     
-    datosPago = trimStrings(datosPago);//primero elimino el whitespace que pueda haber
+    validarReqBodyJson(datosCompra);
     
-    validarReqBodyJson(datosPago);
+    validarCamposRequeridos(datosCompra);
+    
+    validarTypes(datosCompra);
+    
+    datosCompra = trimStrings(datosCompra);//primero elimino el whitespace que pueda haber
 
-    validarCamposRequeridos(datosPago);
-        
-    validarTypes(datosPago);
+    validarFormatoCampos(datosCompra);
 
-    validarFormatoCampos(datosPago);
-
-    return datosPago;
+    return datosCompra;
 };

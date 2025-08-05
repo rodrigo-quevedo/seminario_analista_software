@@ -1,7 +1,7 @@
 import { Request, Response} from "express";
 import validarGetProducto from "@validations/productos/get/getProducto";
 import getProductoService from "@services/productos/getProductoService";
-import ProductoDTO from "@controllers/DTOs/productos/ProductoDTO";
+import ProductoDTO from "../../../DTOs/productos/ProductoDTO";
 
 
 export async function getProductoController(req: Request, res: Response) {

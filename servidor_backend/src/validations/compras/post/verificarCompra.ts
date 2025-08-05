@@ -1,10 +1,10 @@
-import { DatosCompra } from "@customTypes/compra";
+import { DatosVerificarCompra } from "@customTypes/compra";
 import validarReqBodyJson from "@validations/general/validarReqBodyJson";
 import validarCamposRequeridos from "./verificarCompraValidators/validarCamposRequeridos";
 import validarRangosDeValor from "./verificarCompraValidators/validarRangosDeValor";
 import validarTypes from "./verificarCompraValidators/validarTypes";
 
-export default function validarVerificarCompra(datosCompra: DatosCompra): DatosCompra{
+export default function validarVerificarCompra(datosCompra: DatosVerificarCompra): DatosVerificarCompra{
 
     validarReqBodyJson(datosCompra);
 

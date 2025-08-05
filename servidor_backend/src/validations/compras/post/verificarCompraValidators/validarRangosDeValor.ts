@@ -1,10 +1,10 @@
-import { DatosCompra } from "@customTypes/compra";
+import { DatosVerificarCompra } from "@customTypes/compra";
 import InvalidStringFormatError from "@errors/400/InvalidFormatErrors/InvalidStringFormatError";
 import MayorCeroError from "@errors/400/ValueRangeErrors/MayorCeroError";
 import MayorIgualCeroError from "@errors/400/ValueRangeErrors/MayorIgualCeroError";
 import mongoose from "mongoose";
 
-export default function validarRangosDeValor(datosCompra: DatosCompra){
+export default function validarRangosDeValor(datosCompra: DatosVerificarCompra){
     
     if (! mongoose.Types.ObjectId.isValid(datosCompra.idProducto) ) throw new InvalidStringFormatError("idProducto", "string con 24 caracteres hexadecimales")
         

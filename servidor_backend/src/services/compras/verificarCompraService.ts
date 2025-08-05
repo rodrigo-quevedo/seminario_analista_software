@@ -1,11 +1,11 @@
-import { DatosCompra } from "@customTypes/compra";
+import { DatosVerificarCompra } from "@customTypes/compra";
 import ProductoDAO from "@daos/productos/ProductoDAO";
 import UsuarioDAO from "@daos/usuarios/UsuarioDAO";
 import DatosCompraError from "@errors/400/DatosCompraError";
 import NotFoundInDatabaseError from "@errors/400/NotFoundInDatabaseError";
 
 
-export default async function verificarCompraService(datosCompra: DatosCompra, idUsuario: string): Promise<boolean> {
+export default async function verificarCompraService(datosCompra: DatosVerificarCompra, idUsuario: string): Promise<void> {
     
     //verificar que producto y usuario existen
     let producto = await ProductoDAO.getProducto(datosCompra.idProducto);
@@ -21,6 +21,4 @@ export default async function verificarCompraService(datosCompra: DatosCompra, i
     //verificar puntos >= descuento
     if (usuario.puntos < datosCompra.descuento) throw new DatosCompraError("descuento", `El descuento ingresado [${datosCompra.descuento}] es menor a los puntos actuales del usuario [${usuario.puntos}]`);
 
-
-    return true;
 }

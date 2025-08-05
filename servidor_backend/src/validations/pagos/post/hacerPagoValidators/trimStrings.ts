@@ -1,14 +1,16 @@
-import { DatosPago } from "@customTypes/pagos";
+import { DatosCompra } from "@customTypes/pagos";
 
-export default function trimStrings(datosPago: DatosPago): DatosPago{
+export default function trimStrings(datosCompra: DatosCompra): DatosCompra{
 
-    datosPago.codigoSeguridad = datosPago.codigoSeguridad.trim();
-    datosPago.documento = datosPago.documento.trim();
-    datosPago.idTarjeta = datosPago.idTarjeta.trim();
-    datosPago.mail = datosPago.mail.trim();
-    datosPago.titular = datosPago.titular.trim();
-    datosPago.vencimiento = datosPago.vencimiento.trim();
+    datosCompra.pago.codigoSeguridad = datosCompra.pago.codigoSeguridad.trim();
+    datosCompra.pago.documento = datosCompra.pago.documento.trim();
+    datosCompra.pago.idTarjeta = datosCompra.pago.idTarjeta.trim();
+    datosCompra.pago.mail = datosCompra.pago.mail.trim();
+    datosCompra.pago.titular = datosCompra.pago.titular.trim();
+    datosCompra.pago.vencimiento = datosCompra.pago.vencimiento.trim();
+
+    datosCompra.idProducto = datosCompra.idProducto.trim();
 
 
-    return datosPago;
+    return datosCompra;
 }

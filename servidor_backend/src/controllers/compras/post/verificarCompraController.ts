@@ -13,8 +13,8 @@ export async function verificarCompraController (req: RequestAutenticada, res: R
 
 
     // Logica de verificacion de la compra:
-    let compraEsValida = await verificarCompraService(datosCompra, idUsuario);
+    await verificarCompraService(datosCompra, idUsuario);
 
 
-    if (compraEsValida) res.sendStatus(200);    
+    res.sendStatus(200);    
 }

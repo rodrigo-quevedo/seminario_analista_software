@@ -1,7 +1,7 @@
-import { DatosCompra } from "@customTypes/compra";
+import { DatosVerificarCompra } from "@customTypes/compra";
 import FieldRequiredError from "@errors/400/FieldRequiredError";
 
-export default function validarCamposRequeridos(datosCompra: DatosCompra){
+export default function validarCamposRequeridos(datosCompra: DatosVerificarCompra){
     
     if (datosCompra.idProducto == null) throw new FieldRequiredError("idProducto");
 
