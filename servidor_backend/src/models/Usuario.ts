@@ -20,7 +20,7 @@ const UsuarioSchema = new mongoose.Schema<Usuario>(
     },
     {
         toJSON: { virtuals: true },
-        toObject: { virtuals: true },
+        toObject: { virtuals: true }
     }
 
 )

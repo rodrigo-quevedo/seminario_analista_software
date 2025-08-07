@@ -20,7 +20,7 @@ const ProductoSchema =  new mongoose.Schema<Producto>(
     },
     {
         toJSON: { virtuals: true },
-        toObject: { virtuals: true },
+        toObject: { virtuals: true }
     }
 );
 
