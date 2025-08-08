@@ -5,23 +5,23 @@ import TypeStringError from "@errors/400/InvalidTypeErrors/TypeStringError";
 
 export default function validarTypes(datosCompra: DatosCompra){
 
-    if (typeof datosCompra.pago.cantidadCuotas !== 'number') throw new TypeNumberError("pago.cantidadCuotas");
-    if (!Number.isInteger(datosCompra.pago.cantidadCuotas)) throw new TypeIntegerError("pago.cantidadCuotas");
+    if (datosCompra.token == null) throw new TypeStringError("token");
+    if (datosCompra.payment_method_id == null) throw new TypeStringError("payment_method_id");
+    if (datosCompra.issuer_id == null) throw new TypeStringError("issuer_id");
 
-    if (typeof datosCompra.pago.codigoSeguridad !== 'string') throw new TypeStringError("pago.codigoSeguridad");
-    if (typeof datosCompra.pago.documento !== 'string') throw new TypeStringError("pago.documento");
-    if (typeof datosCompra.pago.idTarjeta !== 'string') throw new TypeStringError("pago.idTarjeta");
-    if (typeof datosCompra.pago.mail !== 'string') throw new TypeStringError("pago.mail");
-    if (typeof datosCompra.pago.titular !== 'string') throw new TypeStringError("pago.titular");
-    if (typeof datosCompra.pago.vencimiento !== 'string') throw new TypeStringError("pago.vencimiento");
+    if (typeof datosCompra.installments !== 'number') throw new TypeNumberError("installments");
+    if (!Number.isInteger(datosCompra.installments)) throw new TypeIntegerError("installments");
 
+    if (datosCompra.payer.email == null) throw new TypeStringError("payer.email");
+    if (datosCompra.payer.identification.type == null) throw new TypeStringError("payer.identification.type");
+    if (datosCompra.payer.identification.number == null) throw new TypeStringError("payer.identification.number");
 
-
+    
+    if (typeof datosCompra.idProducto !== 'string') throw new TypeStringError("idProducto");
+    
     if (typeof datosCompra.cantidad !== 'number') throw new TypeNumberError("cantidad");
     if (!Number.isInteger(datosCompra.cantidad)) throw new TypeIntegerError("cantidad");
 
     if (typeof datosCompra.descuento != 'number') throw new TypeNumberError("descuento");
-    
-    if (typeof datosCompra.idProducto !== 'string') throw new TypeStringError("idProducto");
 
 }

@@ -2,12 +2,13 @@ import { DatosCompra } from "@customTypes/pagos";
 
 export default function trimStrings(datosCompra: DatosCompra): DatosCompra{
 
-    datosCompra.pago.codigoSeguridad = datosCompra.pago.codigoSeguridad.trim();
-    datosCompra.pago.documento = datosCompra.pago.documento.trim();
-    datosCompra.pago.idTarjeta = datosCompra.pago.idTarjeta.trim();
-    datosCompra.pago.mail = datosCompra.pago.mail.trim();
-    datosCompra.pago.titular = datosCompra.pago.titular.trim();
-    datosCompra.pago.vencimiento = datosCompra.pago.vencimiento.trim();
+    datosCompra.token = datosCompra.token.trim();
+    datosCompra.payment_method_id = datosCompra.payment_method_id.trim();
+    datosCompra.issuer_id = datosCompra.issuer_id.trim();
+
+    datosCompra.payer.email = datosCompra.payer.email.trim();
+    datosCompra.payer.identification.type = datosCompra.payer.identification.type.trim();
+    datosCompra.payer.identification.number = datosCompra.payer.identification.number.trim();
 
     datosCompra.idProducto = datosCompra.idProducto.trim();
 

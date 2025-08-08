@@ -4,6 +4,7 @@ import validarReqBodyJson from "@validations/general/validarReqBodyJson";
 import validarTypes from "./hacerPagoValidators/validarTypes";
 import validarFormatoCampos from "./hacerPagoValidators/validarFormatoCampos";
 import trimStrings from "./hacerPagoValidators/trimStrings";
+import validarEmptyStrings from "./hacerPagoValidators/validarEmptyStrings";
 
 export default function validarHacerPago(datosCompra: DatosCompra) : DatosCompra{
     
@@ -14,6 +15,8 @@ export default function validarHacerPago(datosCompra: DatosCompra) : DatosCompra
     validarTypes(datosCompra);
     
     datosCompra = trimStrings(datosCompra);//primero elimino el whitespace que pueda haber
+
+    validarEmptyStrings(datosCompra);
 
     validarFormatoCampos(datosCompra);
 
