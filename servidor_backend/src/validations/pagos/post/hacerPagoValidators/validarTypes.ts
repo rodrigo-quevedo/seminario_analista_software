@@ -5,16 +5,16 @@ import TypeStringError from "@errors/400/InvalidTypeErrors/TypeStringError";
 
 export default function validarTypes(datosCompra: DatosCompra){
 
-    if (datosCompra.token == null) throw new TypeStringError("token");
-    if (datosCompra.payment_method_id == null) throw new TypeStringError("payment_method_id");
-    if (datosCompra.issuer_id == null) throw new TypeStringError("issuer_id");
+    if (typeof datosCompra.token !== 'string') throw new TypeStringError("token");
+    if (typeof datosCompra.payment_method_id !== 'string') throw new TypeStringError("payment_method_id");
+    if (typeof datosCompra.issuer_id !== 'string') throw new TypeStringError("issuer_id");
 
     if (typeof datosCompra.installments !== 'number') throw new TypeNumberError("installments");
     if (!Number.isInteger(datosCompra.installments)) throw new TypeIntegerError("installments");
 
-    if (datosCompra.payer.email == null) throw new TypeStringError("payer.email");
-    if (datosCompra.payer.identification.type == null) throw new TypeStringError("payer.identification.type");
-    if (datosCompra.payer.identification.number == null) throw new TypeStringError("payer.identification.number");
+    if (typeof datosCompra.payer.email !== 'string') throw new TypeStringError("payer.email");
+    if (typeof datosCompra.payer.identification.type !== 'string') throw new TypeStringError("payer.identification.type");
+    if (typeof datosCompra.payer.identification.number !== 'string') throw new TypeStringError("payer.identification.number");
 
     
     if (typeof datosCompra.idProducto !== 'string') throw new TypeStringError("idProducto");
