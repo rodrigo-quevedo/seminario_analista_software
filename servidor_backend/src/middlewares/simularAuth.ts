@@ -8,8 +8,13 @@ export default function simularAuth(req: RequestAutenticada, res: Response, next
 
     //Verificar que haya un campo userId en el req.body y asignarlo al objeto 'req'
     
-    if (req.body.idUsuario && typeof req.body.idUsuario === 'string' && mongoose.Types.ObjectId.isValid(req.body.idUsuario)) //if(valor) en JavaScript verifica != '', != 0, != null y != undefined
-        req.idUsuario = req.body.idUsuario 
+    
+    if (req.body.idUsuario //if(valor) en JavaScript verifica != '', != 0, != null y != undefined
+        && 
+        typeof req.body.idUsuario === 'string' 
+        && 
+        mongoose.Types.ObjectId.isValid(req.body.idUsuario)) 
+        req.idUsuario = req.body.idUsuario as string
     
     else throw new UserNotAuthenticatedError();
 
