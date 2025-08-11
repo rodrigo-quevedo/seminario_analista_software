@@ -1,1 +1,1 @@
-export * from './post/hacerPago';
+export * from './post/hacerPagoController';
