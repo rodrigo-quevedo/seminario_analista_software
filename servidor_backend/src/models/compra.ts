@@ -3,9 +3,9 @@ import Compra from "@customTypes/entities/Compra";
 
 const CompraSchema =  new mongoose.Schema<Compra>(
     {
-        idPago: {type: Number, required: true},
         idProducto: {type: String, required: true},
-        idCliente: {type: String, required: true},
+        idUsuario: {type: String, required: true},
+        idPago: {type: Number, required: false, default: null},
         
         cantidad: {type: Number, required: true},
         precioUnitario: {
@@ -25,7 +25,7 @@ const CompraSchema =  new mongoose.Schema<Compra>(
             }
         },
 
-        fechaHora: {type: String, required: true}//podria ser unique, pero podria haber problemas de concurrencia
+        fechaHora: {type: Date, required: true}//podria ser unique, pero podria haber problemas de concurrencia
     },
     {
         toJSON: { virtuals: true },
