@@ -1,0 +1,117 @@
+
+<html>
+<head>
+    <script src="https://sdk.mercadopago.com/js/v2">
+    </script>
+    <style>
+        *{
+            font-family: Verdana, sans-serif !important;
+        }
+    </style>
+</head>
+<body>
+    <div id="paymentBrick_container">
+    </div>
+    <script>
+
+
+
+        const mp = new MercadoPago('TEST-912ca229-2a34-4080-9fcb-698c9cb4d835', {
+            locale: 'es-AR'
+        });
+
+        const bricksBuilder = mp.bricks();
+
+        const renderPaymentBrick = async (bricksBuilder) => {
+            const settings = {
+                initialization: {
+                    amount: 10000, //TO DO: reemplazar hardcodeo por variable calculada con (prod.precioUnitario * cantidad) - descuento. 
+                    
+                    payer: {
+                        email: "example@email.com"//TO DO: En el backend, traer email del usuario desde la BD.
+                    }
+
+                },
+                customization: {
+                    visual: {
+                        style: {
+                            theme: "default",
+                        },
+                    },
+                    paymentMethods: {
+                        bankTransfer: "all",                                  
+                        creditCard: "all",
+                        maxInstallments: 24
+                    },
+                },
+                callbacks: {
+                    onReady: () => {
+                    /*
+                        Callback llamado cuando el Brick está listo.
+                        Aquí puede ocultar cargamentos de su sitio, por ejemplo.
+                    */
+                    },
+
+                    onSubmit: ({ selectedPaymentMethod, formData }) => {
+                        
+                        //simular logica React + TS:
+                            //(porque en TS hay que armar un type para los datos del formulario)
+                        formData.idProducto = "688fb2fa07a860c4273c90aa";
+                        formData.cantidad = 300;
+                        formData.descuento = 0;
+
+                        //simular Auth
+                        formData.idUsuario = "68910d946f86ddfab00be368";
+   
+
+
+                        // callback llamado al hacer clic en el botón de envío de datos
+                        return new Promise((resolve, reject) => {
+                            fetch("http://localhost:3000/pagos", {
+                                method: "POST",
+                                mode: "cors",
+                                credentials:"include",
+                                headers: {
+                                    "Content-Type": "application/json"
+                                },
+                                body: JSON.stringify(formData),
+                            })
+                            .then((response) => response.json())
+                            .then((response) => {
+                                // recibir el resultado del pago
+                                resolve();
+                            })
+                            .catch((error) => {
+                                // manejar la respuesta de error al intentar crear el pago
+                                reject();
+                            });
+                        });
+                    },
+                    onError: (error) => {
+                        // callback llamado para todos los casos de error de Brick
+                        console.error(error);
+                    },
+                },
+            };
+
+            window.paymentBrickController = await bricksBuilder.create(
+                "payment",
+                "paymentBrick_container",
+                settings
+            );
+
+        };
+
+        renderPaymentBrick(bricksBuilder);
+
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+

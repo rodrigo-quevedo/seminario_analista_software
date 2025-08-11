@@ -1,0 +1,9 @@
+export default class CustomError extends Error {
+
+    statusCode: number = 500; //default 500
+
+    constructor(message: string){ 
+        super(message);
+    }
+
+}
