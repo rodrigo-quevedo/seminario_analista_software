@@ -13,6 +13,7 @@
   "description": "Backend server API",
   "dependencies": {
     "express": "^5.1.0",
+    "mercadopago": "^2.8.0",
     "module-alias": "^2.2.3",
     "mongoose": "^8.17.0"
   },

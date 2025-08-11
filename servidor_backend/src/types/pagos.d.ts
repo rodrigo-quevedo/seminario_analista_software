@@ -1,23 +1,43 @@
 //Los siguientes son campos necesarios para ingresar pagos a la API mercadopago
 // const response = await mercadopago.payment.create({
-//   transaction_amount,
+//   transaction_amount, //requerido
 
-//   token,
+//   token, //requerido
 //   payment_method_id,
 //   issuer_id,
 
-//   installments,
+//   installments, //requerido
 
 //   description,
 
 //   payer: {
-//     email,
+//     email, //requerido
 //     identification: {
 //       type,
 //       number
 //     }
 //   }
 // });
+
+export interface DatosCreatePaymentMercadoPago {
+    transaction_amount: number,
+
+    token: string,
+    payment_method_id: string,
+    issuer_id: number,
+
+    installments: number,
+
+    description: string,
+
+     payer : {
+        email: string,
+        identification: {
+            type: string,
+            number: string
+        }
+    }
+}
 
 
 
@@ -47,3 +67,5 @@ export interface DatosCompra {
     // idUsuario: permite buscar usuario.puntos (para verificar descuentos) y usuario.email (verificar email)
         //-> Lo obtengo de la session (en este caso, del middleware 'simularAuth')
 }
+
+export type PaymentResponse_Status = "approved" | "in_process" | "rejected";
