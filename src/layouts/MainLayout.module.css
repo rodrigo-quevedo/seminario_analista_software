@@ -1,0 +1,15 @@
+
+
+.main{
+    min-height: 80vh;
+
+    padding: 40px 100px;
+}
+
+@media (width < 1300px){
+    .main{
+        min-height: 75vh;
+
+        padding: 40px;
+    }
+}
