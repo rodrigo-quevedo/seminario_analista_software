@@ -1,0 +1,42 @@
+
+
+.container {
+    max-width: 200px;
+}
+
+.imgContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+    height: 250px;
+
+    background: #d9d9d9;
+}
+
+.imgContainer img {
+    width: 85%;
+
+    border-radius: 10px;
+}
+
+
+.infoProducto {
+    background: #000;
+    color: #c5c5c5;
+    
+    padding: 10px;
+    
+    font-size: 20px;
+}
+
+.precio {
+    text-align: right;
+
+    margin-top: 15px;
+
+    color: #fff;
+
+    font-size: 30px;
+}
