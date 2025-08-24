@@ -20,7 +20,7 @@ export default function Header(){
 
             <nav>
                 <ul>
-                    <li>Catálogo</li>
+                    <li className={styles.selected}>Catálogo</li>
                     <li>Novedades</li>
                     <li>Tendencias</li>
                     <li>Ofertas</li>

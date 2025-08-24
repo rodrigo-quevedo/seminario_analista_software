@@ -29,6 +29,12 @@
     cursor: pointer
 }
 
+.selected {
+    text-decoration: 5px solid #000 underline;
+    text-underline-offset: 5px;
+
+}
+
 .userActions{
     display: flex;
 
