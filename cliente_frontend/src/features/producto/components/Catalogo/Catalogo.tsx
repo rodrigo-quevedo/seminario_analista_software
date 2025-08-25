@@ -21,9 +21,7 @@ export default function Catalogo({productos, carga, error, setProdDetalle}: Prop
             {productos.map((prod)=>{
                 return <ProductoCard
                     key={prod.id}
-                    urlFoto={prod.urlFoto}
-                    nombre={prod.nombre}
-                    precioUnitario={prod.precioUnitario}
+                    producto={prod}
                     setProdDetalle={setProdDetalle}
                 />
             })}
