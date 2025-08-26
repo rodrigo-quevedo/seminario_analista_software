@@ -1,7 +1,10 @@
+import AceptarButton from "../../../../components/buttons/AceptarButton/AceptarButton";
+import VolverButton from "../../../../components/buttons/VolverButton/VolverButton";
+import RoundImg from "../../../../components/RoundImg/RoundImg";
 import type { Producto } from "../../../../types/producto";
 import styles from "./DetalleProducto.module.css"
 
-import backIcon from "../../../../assets/icons/back.svg"
+
 
 type Props = {
     prodDetalle: Producto,
@@ -17,16 +20,15 @@ export default function Catalogo({prodDetalle, setProdDetalle, setProdCompra}: P
     return (
         <section className={styles.container}>
 
-            <button 
-                className={styles.volverButton} 
-                onClick={()=>setProdDetalle(null)}>
-            <img src={backIcon} alt="Volver" />
-            Volver
-            </button>
-
-            <div className={styles.prodImgContainer}>
-                <img src={prodDetalle.urlFoto} alt={prodDetalle.nombre} />
+            <div className={styles.volverButtonPosition}>
+                <VolverButton onClickHandler={(e)=>{setProdDetalle(null)}} />
             </div>
+
+            <RoundImg 
+                urlFoto={prodDetalle.urlFoto}
+                nombre={prodDetalle.nombre}
+            />
+
 
             <div className={styles.detalleContainer}>
                 <h1>{prodDetalle.nombre}</h1>
@@ -52,12 +54,10 @@ export default function Catalogo({prodDetalle, setProdDetalle, setProdCompra}: P
                 </div>
 
 
-                <button 
-                    className={styles.comprarButton}
-                    onClick={()=>{setProdCompra(prodDetalle)}}    
-                >
-                Comprar
-                </button>
+                <AceptarButton 
+                    texto="Comprar"
+                    onClickHandler={()=>{setProdCompra(prodDetalle)}}    
+                />
 
             </div>
 

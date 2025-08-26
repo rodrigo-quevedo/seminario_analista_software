@@ -1,0 +1,21 @@
+
+.container h1{
+    text-align: center;
+
+    font-size: 2.3em;
+    
+    margin-bottom: 40px;
+}
+
+.compraContainer {
+    display: flex;
+
+    align-items: top;
+
+    gap: 100px;
+
+    margin-top: 25px;
+
+    padding: 0 20%;
+}
+

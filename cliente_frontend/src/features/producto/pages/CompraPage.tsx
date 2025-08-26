@@ -1,5 +1,6 @@
 import type { Pago } from "../../../types/pago";
 import type { Producto } from "../../../types/producto";
+import type { Usuario } from "../../../types/usuario";
 import CompraProducto from "../components/CompraProducto/CompraProducto";
 
 type Props = {
@@ -7,15 +8,17 @@ type Props = {
 
     setProdCompra: React.Dispatch<React.SetStateAction<Producto | null>>,
 
-    setPago: React.Dispatch<React.SetStateAction<Pago | null>>
+    setPago: React.Dispatch<React.SetStateAction<Pago | null>>,
+
+    usuario: Usuario
 }
 
-export default function CompraPage({prodCompra, setProdCompra, setPago}: Props){
+export default function CompraPage({prodCompra, setProdCompra, setPago, usuario}: Props){
     
     return(
     <>
         {/* En una page real, se agregarian otras <section>*/}
-        <CompraProducto prodCompra={prodCompra} setProdCompra={setProdCompra} setPago={setPago}/>
+        <CompraProducto prodCompra={prodCompra} setProdCompra={setProdCompra} setPago={setPago} usuario={usuario}/>
     </>
     )
 }

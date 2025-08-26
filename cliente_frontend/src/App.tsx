@@ -7,6 +7,7 @@ import DetallePage from "./features/producto/pages/DetallePage";
 import type { Pago } from "./types/pago";
 import PagoPage from "./features/pago/pages/PagoPage";
 import CompraPage from "./features/producto/pages/CompraPage";
+import type { Usuario } from "./types/usuario";
 
 
 function App() {
@@ -17,6 +18,11 @@ function App() {
     const [prodCompra, setProdCompra] = useState<Producto|null>(null);
     const [pago, setPago] = useState<Pago|null>(null);
 
+    //auth: usuario hardcodeado
+    const usuario: Usuario = {
+        id: "68910d946f86ddfab00be367",//es una ID que copiada manualmente de la base de datos
+        puntos: 4500
+    }
 
     return (
     <>
@@ -28,7 +34,7 @@ function App() {
                 
                 pago? <PagoPage/>
                 :
-                    prodCompra? <CompraPage prodCompra={prodCompra} setProdCompra={setProdCompra} setPago={setPago}/>
+                    prodCompra? <CompraPage prodCompra={prodCompra} setProdCompra={setProdCompra} setPago={setPago} usuario={usuario}/>
                     :
                         prodDetalle? <DetallePage prodDetalle={prodDetalle} setProdDetalle={setProdDetalle} setProdCompra={setProdCompra}/>
                         :
