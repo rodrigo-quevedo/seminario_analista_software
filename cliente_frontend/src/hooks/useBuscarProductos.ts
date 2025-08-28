@@ -17,10 +17,10 @@ export default function useBuscarProductos(){
         getProductos()
             .then((res)=>{setProductos(res.productos)})
         
-            .catch((err)=>{setError(err)})
+            .catch((err: Error)=>{setError(err.name +" : "+err.message)})
             
             .finally(()=>{setCarga(false)})
-    }, [])
+    }, []);
 
-    return {productos, carga, error }
+    return {productos, carga, error}
 }

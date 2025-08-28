@@ -1,3 +1,4 @@
+import { useState } from "react";
 import AceptarButton from "../../../../components/buttons/AceptarButton/AceptarButton";
 import VolverButton from "../../../../components/buttons/VolverButton/VolverButton";
 import RoundImg from "../../../../components/RoundImg/RoundImg";
@@ -18,6 +19,8 @@ type Props = {
 
 export default function CompraProducto({prodCompra, setProdCompra, setPago, usuario}: Props){
 
+    const [cantidad, setCantidad] = useState<number>(1);
+    const [descuento, setDescuento] = useState<number>(0);
 
     return (
         <section className={styles.container}>
@@ -32,26 +35,57 @@ export default function CompraProducto({prodCompra, setProdCompra, setPago, usua
                     nombre={prodCompra.nombre}
                 />
 
-                <div>
+                <div className={styles.compraInfoContainer}>
 
                     <div className={styles.detalleContainer}>
-                        <div >
-                            <p>Unidades disponibles:</p>
-                            <p>{prodCompra.stock}</p>
+
+                        <div className={styles.detalleRow}>
+                            <p className={styles.detalleRow_texto}>Unidades disponibles:</p>
+                            <p className={styles.detalleRow_stock}>{prodCompra.stock}</p>
                         </div>
 
-                        <div>
-                            <p>Precio unitario:</p>
-                            <p>$ {prodCompra.precioUnitario}</p>
+                        <div className={styles.detalleRow}>
+                            <p className={styles.detalleTexto}>Precio unitario:</p>
+                            <p className={styles.detalleRow_precio}>$ {prodCompra.precioUnitario}</p>
                         </div>
 
-                        <div>
-                            <p>Puntos disponibles:</p>
-                            <p>$ {usuario.puntos}</p>
+                        <div className={styles.detalleRow}>
+                            <p className={styles.detalleTexto}>Puntos disponibles:</p>
+                            <p className={styles.detalleRow_puntos}>$ {usuario.puntos}</p>
                         </div>
+                        
                     </div>
                     
                     <form className={styles.formContainer}>
+                        <div>
+                            <label htmlFor="cantidad_compra_form_input">Elegir cantidad:</label>
+                            <input 
+                                type="number" id="cantidad_compra_form_input" 
+                                value={cantidad} 
+                                step="1" //integers
+                                min="1"
+                                onChange={(e)=>{setCantidad(Number(e.target.value))}}
+                            />
+                        </div>
+
+                        <div>
+                            <label htmlFor="puntos_compra_form_input">Gastar puntos:</label>
+                            <div className={styles.formInput}>
+                                $
+                                <input 
+                                    type="number" id="cantidad_compra_form_input" 
+                                    value={descuento.toFixed(2)}
+                                    step="0.01" //2 decimales (centavos)
+                                    min="0"
+                                    onChange={(e)=>{setDescuento(Number(e.target.value))}}
+                                />
+                            </div>
+                        </div>
+
+                        <div>
+                            <span>TOTAL</span>
+                            <span>$ {((Number(cantidad) * prodCompra.precioUnitario) - Number(descuento)).toFixed(2)}</span>
+                        </div>
 
                     </form>
                     

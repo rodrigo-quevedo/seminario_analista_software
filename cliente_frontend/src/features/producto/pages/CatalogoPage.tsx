@@ -15,6 +15,6 @@ export default function CatalogoPage({productos, carga, error, setProdDetalle}: 
     <>
         {/* En una page real, se agregarian otras <section>, por ejemplo el componente para realizar el filtro de productos del catalogo */}
         <Catalogo productos={productos} carga={carga} error={error} setProdDetalle={setProdDetalle}/>
-    </>
+    </> 
     )
 }

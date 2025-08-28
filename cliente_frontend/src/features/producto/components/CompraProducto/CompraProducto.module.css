@@ -9,7 +9,7 @@
 
 .compraContainer {
     display: flex;
-
+    justify-content: space-between;
     align-items: top;
 
     gap: 100px;
@@ -19,3 +19,23 @@
     padding: 0 20%;
 }
 
+
+.detalleRow {
+    display: flex;
+}
+
+.detalleRow .detalleRow_texto {
+    font-weight: 600;
+}
+
+.detalleRow .detalleRow_stock {
+
+}
+
+.detalleRow .detalleRow_precio {
+
+}
+
+.detalleRow .detalleRow_puntos {
+    
+}
