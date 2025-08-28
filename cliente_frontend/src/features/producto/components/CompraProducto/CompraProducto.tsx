@@ -31,7 +31,7 @@ export default function CompraProducto({prodCompra, setProdCompra, setPago, usua
 
             <div className={styles.compraContainer}>
                 <RoundImg 
-                    urlFoto={prodCompra.urlFoto}
+                    urlFoto={`/images/productos/${prodCompra.urlFoto}`}
                     nombre={prodCompra.nombre}
                 />
 
@@ -41,23 +41,23 @@ export default function CompraProducto({prodCompra, setProdCompra, setPago, usua
 
                         <div className={styles.detalleRow}>
                             <p className={styles.detalleRow_texto}>Unidades disponibles:</p>
-                            <p className={styles.detalleRow_stock}>{prodCompra.stock}</p>
+                            <p className={`${styles.detalleRow_value} ${styles.detalleRow_stock}`}>{prodCompra.stock}</p>
                         </div>
 
                         <div className={styles.detalleRow}>
-                            <p className={styles.detalleTexto}>Precio unitario:</p>
-                            <p className={styles.detalleRow_precio}>$ {prodCompra.precioUnitario}</p>
+                            <p className={styles.detalleRow_texto}>Precio unitario:</p>
+                            <p className={`${styles.detalleRow_value} ${styles.detalleRow_precio}`}>$ {prodCompra.precioUnitario}</p>
                         </div>
 
                         <div className={styles.detalleRow}>
-                            <p className={styles.detalleTexto}>Puntos disponibles:</p>
-                            <p className={styles.detalleRow_puntos}>$ {usuario.puntos}</p>
+                            <p className={styles.detalleRow_texto}>Puntos disponibles:</p>
+                            <p className={`${styles.detalleRow_value} ${styles.detalleRow_puntos}`}>$ {usuario.puntos}</p>
                         </div>
-                        
+
                     </div>
                     
                     <form className={styles.formContainer}>
-                        <div>
+                        <div className={styles.formRow} >
                             <label htmlFor="cantidad_compra_form_input">Elegir cantidad:</label>
                             <input 
                                 type="number" id="cantidad_compra_form_input" 
@@ -68,18 +68,19 @@ export default function CompraProducto({prodCompra, setProdCompra, setPago, usua
                             />
                         </div>
 
-                        <div>
+                        <div className={styles.formRow} >
                             <label htmlFor="puntos_compra_form_input">Gastar puntos:</label>
-                            <div className={styles.formInput}>
-                                $
+                            {/* <div className={styles.formInput}>
+                                $ */}
                                 <input 
                                     type="number" id="cantidad_compra_form_input" 
+                                    className={styles.form_precio}
                                     value={descuento.toFixed(2)}
                                     step="0.01" //2 decimales (centavos)
                                     min="0"
                                     onChange={(e)=>{setDescuento(Number(e.target.value))}}
                                 />
-                            </div>
+                            {/* </div> */}
                         </div>
 
                         <div>

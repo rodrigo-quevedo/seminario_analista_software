@@ -15,8 +15,8 @@ export default function ProductoCard({producto, setProdDetalle}: Params) {
     return(
         <div className={styles.container} onClick={()=>{setProdDetalle(producto)}}>
             <div className={styles.imgContainer}>
-                {/* <img loading="lazy" src={producto.urlFoto} alt={producto.nombre} /> */}
-                <img loading="lazy" src="salkdfj" alt={producto.nombre} />
+                <img loading="lazy" src={`/images/productos/${producto.urlFoto}`} alt={producto.nombre} />
+                {/* <img loading="lazy" src="salkdfj" alt={producto.nombre} /> */}
             </div>
 
             <div className={styles.infoProducto}>

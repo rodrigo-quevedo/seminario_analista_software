@@ -19,23 +19,52 @@
     padding: 0 20%;
 }
 
+.compraInfoContainer {
+    flex: 1;
+}
 
 .detalleRow {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 15px;
 }
 
-.detalleRow .detalleRow_texto {
+.detalleRow_texto {
     font-weight: 600;
 }
 
-.detalleRow .detalleRow_stock {
+.detalleRow_value {
+    font-weight: 700;
+    font-size: 24px;
+    color: #000;
 
+    border: 1px solid #000;
+
+    text-align: center;
+}
+
+.detalleRow .detalleRow_stock {
+    background: #CCCCCC;
+
+    padding: 7px 30px;
 }
 
 .detalleRow .detalleRow_precio {
+    background: #CCCCCC;
 
+    padding: 7px 30px;
+    min-width: 35%;
 }
 
 .detalleRow .detalleRow_puntos {
+    background: #fff;
+
+    padding: 7px 30px;
+    min-width: 35%;
+}
+
+.form_precio {
     
 }

@@ -25,7 +25,7 @@ export default function Catalogo({prodDetalle, setProdDetalle, setProdCompra}: P
             </div>
 
             <RoundImg 
-                urlFoto={prodDetalle.urlFoto}
+                urlFoto={`/images/productos/${prodDetalle.urlFoto}`}
                 nombre={prodDetalle.nombre}
             />
 
