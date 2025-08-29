@@ -68,24 +68,26 @@ export default function CompraProducto({prodCompra, setProdCompra, setPago, usua
                             />
                         </div>
 
-                        <div className={styles.formRow} >
-                            <label htmlFor="puntos_compra_form_input">Gastar puntos:</label>
-                            {/* <div className={styles.formInput}>
-                                $ */}
-                                <input 
-                                    type="number" id="cantidad_compra_form_input" 
-                                    className={styles.form_precio}
-                                    value={descuento.toFixed(2)}
-                                    step="0.01" //2 decimales (centavos)
-                                    min="0"
-                                    onChange={(e)=>{setDescuento(Number(e.target.value))}}
-                                />
+                        <div className={`${styles.formRowPrecio} ${styles.formRow}`} >
+                            <label htmlFor="puntos_compra_form_input" className={styles.label_precio}>Gastar puntos:</label>
+                            {/* <div className={styles.form_precio_container}> */}
+                                {/* <span className={styles.form_precio_sign}>$</span> */}
+                            <input 
+                                type="number" id="cantidad_compra_form_input" 
+                                className={styles.form_precio}
+                                value={descuento.toFixed(2)}
+                                step="0.01" //2 decimales (centavos)
+                                min="0"
+                                onChange={(e)=>{setDescuento(Number(e.target.value))}}
+                            />
                             {/* </div> */}
                         </div>
 
-                        <div>
-                            <span>TOTAL</span>
-                            <span>$ {((Number(cantidad) * prodCompra.precioUnitario) - Number(descuento)).toFixed(2)}</span>
+                        <div className={styles.totalRow}>
+                            <span className={styles.totalRow_title}>TOTAL</span>
+                            <span className={styles.totalRow_price}>
+                                $ {((Number(cantidad) * prodCompra.precioUnitario) - Number(descuento)).toFixed(2)}
+                            </span>
                         </div>
 
                     </form>
