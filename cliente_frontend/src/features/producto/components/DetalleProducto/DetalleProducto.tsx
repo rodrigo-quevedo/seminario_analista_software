@@ -27,8 +27,8 @@ export default function Catalogo({prodDetalle, setProdDetalle, setProdCompra}: P
             <RoundImg 
                 urlFoto={`/images/productos/${prodDetalle.urlFoto}`}
                 nombre={prodDetalle.nombre}
-            />
 
+            />
 
             <div className={styles.detalleContainer}>
                 <h1>{prodDetalle.nombre}</h1>

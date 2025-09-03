@@ -16,7 +16,7 @@
 
     margin-top: 25px;
 
-    padding: 0 20%;
+    padding: 0 15%;
 }
 
 .compraInfoContainer {
@@ -146,7 +146,7 @@
 }
 
 .form_precio {
-    padding-left: 20px !important;
+    padding-left: 35px !important;
 }
 
 
@@ -167,5 +167,5 @@
 
 .totalRow_price {
     font-weight: 600;
-    font-size: 35px;
+    font-size: 30px;
 }

@@ -17,5 +17,10 @@ export async function verificarCompraController (req: RequestAutenticada, res: R
     verificarCompraService(producto.stock, datosCompra.cantidad, usuario.puntos, datosCompra.descuento);
 
 
-    res.sendStatus(200);    
+    res.json({
+        producto: producto,
+        cantidad: datosCompra.cantidad,
+        descuento: datosCompra.descuento,
+        idUsuario: usuario.id
+    });    
 }

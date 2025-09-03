@@ -4,6 +4,16 @@
     max-width: 200px;
 }
 
+.container:hover{
+    box-shadow: 3px 3px 30px #000;
+
+    cursor: pointer;
+    
+    transform: scale(1.02);
+
+    transition: 0.4s all;
+}
+
 .imgContainer {
     display: flex;
     align-items: center;

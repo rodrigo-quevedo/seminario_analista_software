@@ -8,6 +8,7 @@ import type { Pago } from "./types/pago";
 import PagoPage from "./features/pago/pages/PagoPage";
 import CompraPage from "./features/producto/pages/CompraPage";
 import type { Usuario } from "./types/usuario";
+import ErrorPage from "./features/Error/pages/ErrorPage";
 
 
 function App() {
@@ -17,6 +18,8 @@ function App() {
     const [prodDetalle, setProdDetalle] = useState<Producto|null>(null);
     const [prodCompra, setProdCompra] = useState<Producto|null>(null);
     const [pago, setPago] = useState<Pago|null>(null);
+
+    const [errMsj, setErrMsj] = useState<string|null>(null);
 
     //auth: usuario hardcodeado
     const usuario: Usuario = {
@@ -28,17 +31,18 @@ function App() {
     <>
         <MainLayout>
             {
+                errMsj? <ErrorPage errMsj={errMsj} setErrMsj={setErrMsj} /> :
                 // Esta es una solución a la navegación entre paginas sin utilizar react router.
                 // Es una solucion mala, altamente mejorable con la libreria react router, y solo sirve para una primera iteracion del prototipo.
                 // Aclaracion: Para esta primera iteracion no se usan librerias, salvo las del project setup (types, typescript, eslint, etc.).
                 
-                pago? <PagoPage/>
-                :
-                    prodCompra? <CompraPage prodCompra={prodCompra} setProdCompra={setProdCompra} setPago={setPago} usuario={usuario}/>
+                    pago? <PagoPage />
                     :
-                        prodDetalle? <DetallePage prodDetalle={prodDetalle} setProdDetalle={setProdDetalle} setProdCompra={setProdCompra}/>
+                        prodCompra? <CompraPage prodCompra={prodCompra} setProdCompra={setProdCompra} setPago={setPago} usuario={usuario} setErrMsj={setErrMsj}/>
                         :
-                            <CatalogoPage productos={productos} carga={carga} error={error} setProdDetalle={setProdDetalle}/>
+                            prodDetalle? <DetallePage prodDetalle={prodDetalle} setProdDetalle={setProdDetalle} setProdCompra={setProdCompra}/>
+                            :
+                                <CatalogoPage productos={productos} carga={carga} error={error} setProdDetalle={setProdDetalle} setErrMsj={setErrMsj}/>
             }
         </MainLayout>
     </>

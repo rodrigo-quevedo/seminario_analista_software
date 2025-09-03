@@ -6,6 +6,8 @@ import type { Pago } from "../../../../types/pago";
 import type { Producto } from "../../../../types/producto";
 import type { Usuario } from "../../../../types/usuario";
 import styles from "./CompraProducto.module.css"
+import postVerificar from "../../../../api/compras/postVerificar";
+import type { DatosVerificarCompra, VerificarCompraError } from "../../../../types/compra";
 
 type Props = {
     prodCompra: Producto,
@@ -14,10 +16,12 @@ type Props = {
 
     setPago: React.Dispatch<React.SetStateAction<Pago | null>>,
 
-    usuario: Usuario
+    usuario: Usuario,
+
+    setErrMsj: React.Dispatch<React.SetStateAction<string | null>>
 }
 
-export default function CompraProducto({prodCompra, setProdCompra, setPago, usuario}: Props){
+export default function CompraProducto({prodCompra, setProdCompra, setPago, usuario, setErrMsj}: Props){
 
     const [cantidad, setCantidad] = useState<number>(1);
     const [descuento, setDescuento] = useState<number>(0);
@@ -64,7 +68,10 @@ export default function CompraProducto({prodCompra, setProdCompra, setPago, usua
                                 value={cantidad} 
                                 step="1" //integers
                                 min="1"
-                                onChange={(e)=>{setCantidad(Number(e.target.value))}}
+                                onChange={(e)=>{
+                                    if (Number(e.target.value) <= prodCompra.stock)
+                                        setCantidad(Number(e.target.value))
+                                }}
                             />
                         </div>
 
@@ -75,10 +82,15 @@ export default function CompraProducto({prodCompra, setProdCompra, setPago, usua
                             <input 
                                 type="number" id="cantidad_compra_form_input" 
                                 className={styles.form_precio}
+                                // value={(descuento === 0) ? "-" : descuento.toFixed(2)}
                                 value={descuento.toFixed(2)}
                                 step="0.01" //2 decimales (centavos)
-                                min="0"
-                                onChange={(e)=>{setDescuento(Number(e.target.value))}}
+                                min="0.00"
+                                onChange={(e)=>{
+                                    if (Number(e.target.value) <= usuario.puntos)
+                                        setDescuento(Number(e.target.value))
+                                }}
+                                
                             />
                             {/* </div> */}
                         </div>
@@ -94,8 +106,32 @@ export default function CompraProducto({prodCompra, setProdCompra, setPago, usua
                     
                     <AceptarButton
                         texto="Comprar"
-                        onClickHandler={()=>{
-                            // setPago({})
+                        onClickHandler={async (e)=>{
+                            e.preventDefault();
+                            
+                            //post /verificar
+                            const result = await postVerificar({
+                                idProducto: prodCompra.id,
+                                cantidad: cantidad,
+                                descuento: descuento,
+                                idUsuario: usuario.id
+                            });
+
+                            let err = result as VerificarCompraError;
+                            
+                            if (err.name && err.descripcion) {
+                                setErrMsj(`${err.name}: ${err.descripcion}`);
+                                return;
+                            }
+                            
+                            let datosCompraVerificados = result as Pago;
+
+                            setPago({
+                                producto: datosCompraVerificados.producto,
+                                cantidad: datosCompraVerificados.cantidad,
+                                descuento: datosCompraVerificados.descuento
+                            })
+                            
                         }}
                     />
 

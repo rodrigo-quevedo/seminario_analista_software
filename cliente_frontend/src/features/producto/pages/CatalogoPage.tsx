@@ -6,15 +6,17 @@ type Props = {
     carga: boolean,
     error: string | null,
 
-    setProdDetalle: React.Dispatch<React.SetStateAction<Producto | null>>
+    setProdDetalle: React.Dispatch<React.SetStateAction<Producto | null>>,
+
+    setErrMsj: React.Dispatch<React.SetStateAction<string | null>>
 }
 
-export default function CatalogoPage({productos, carga, error, setProdDetalle}: Props){
+export default function CatalogoPage({productos, carga, error, setProdDetalle, setErrMsj}: Props){
     
     return(
     <>
         {/* En una page real, se agregarian otras <section>, por ejemplo el componente para realizar el filtro de productos del catalogo */}
-        <Catalogo productos={productos} carga={carga} error={error} setProdDetalle={setProdDetalle}/>
+        <Catalogo productos={productos} carga={carga} error={error} setProdDetalle={setProdDetalle} setErrMsj={setErrMsj}/>
     </> 
     )
 }

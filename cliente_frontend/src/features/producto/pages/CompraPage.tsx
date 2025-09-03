@@ -10,15 +10,17 @@ type Props = {
 
     setPago: React.Dispatch<React.SetStateAction<Pago | null>>,
 
-    usuario: Usuario
+    usuario: Usuario,
+
+    setErrMsj: React.Dispatch<React.SetStateAction<string | null>>
 }
 
-export default function CompraPage({prodCompra, setProdCompra, setPago, usuario}: Props){
+export default function CompraPage({prodCompra, setProdCompra, setPago, usuario, setErrMsj}: Props){
     
     return(
     <>
         {/* En una page real, se agregarian otras <section>*/}
-        <CompraProducto prodCompra={prodCompra} setProdCompra={setProdCompra} setPago={setPago} usuario={usuario}/>
+        <CompraProducto prodCompra={prodCompra} setProdCompra={setProdCompra} setPago={setPago} usuario={usuario} setErrMsj={setErrMsj}/>
     </>
     )
 }

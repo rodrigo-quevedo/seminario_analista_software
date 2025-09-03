@@ -8,13 +8,18 @@ type Props = {
     carga: boolean,
     error: string | null,
 
-    setProdDetalle: React.Dispatch<React.SetStateAction<Producto | null>>
+    setProdDetalle: React.Dispatch<React.SetStateAction<Producto | null>>,
+    
+    setErrMsj: React.Dispatch<React.SetStateAction<string | null>>
 }
 
-export default function Catalogo({productos, carga, error, setProdDetalle}: Props){
+export default function Catalogo({productos, carga, error, setProdDetalle, setErrMsj}: Props){
 
     if (carga) return <p>Cargando...</p>;
-    if (error) return <p>Error: {error}</p>;
+    if (error) {
+        setErrMsj(error)
+        return <p>Error: {error}</p> //fallback
+    };
 
     return (
         <section className={styles.container}>

@@ -1,14 +1,16 @@
 import ErrorSection from "../components/ErrorSection";
 
 type Props = {
-    errMsj: string
+    errMsj: string,
+
+    setErrMsj: React.Dispatch<React.SetStateAction<string | null>>
 }
 
 
-export default function ErrorPage({errMsj}: Props){
+export default function ErrorPage({errMsj, setErrMsj}: Props){
 
 
     return (
-        <ErrorSection errMsj={errMsj}/>
+        <ErrorSection errMsj={errMsj} setErrMsj={setErrMsj}/>
     )
 }

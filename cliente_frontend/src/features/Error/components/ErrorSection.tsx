@@ -3,13 +3,15 @@ import styles from "./ErrorSection.module.css"
 import errorIcon from "../../../assets/icons/error.png"
 
 type Props = {
-    errMsj: string
+    errMsj: string,
+
+    setErrMsj: React.Dispatch<React.SetStateAction<string | null>>
 }
 
 
 
 
-export default function ErrorSection({errMsj}: Props){
+export default function ErrorSection({errMsj, setErrMsj}: Props){
 
     return (
         <section className={styles.container}>
@@ -22,7 +24,7 @@ export default function ErrorSection({errMsj}: Props){
                     <p>{errMsj}</p>
                 </div>
 
-                <button >
+                <button onClick={()=>{setErrMsj(null)}}>
                     Aceptar
                 </button>
             </div>
