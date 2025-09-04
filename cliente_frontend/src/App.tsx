@@ -9,6 +9,7 @@ import PagoPage from "./features/pago/pages/PagoPage";
 import CompraPage from "./features/producto/pages/CompraPage";
 import type { Usuario } from "./types/usuario";
 import ErrorPage from "./features/Error/pages/ErrorPage";
+import useInitMercadoPago from "./hooks/useInitMercadoPago";
 
 
 function App() {
@@ -27,6 +28,8 @@ function App() {
         puntos: 4500
     }
 
+    useInitMercadoPago();
+
     return (
     <>
         <MainLayout>
@@ -36,7 +39,7 @@ function App() {
                 // Es una solucion mala, altamente mejorable con la libreria react router, y solo sirve para una primera iteracion del prototipo.
                 // Aclaracion: Para esta primera iteracion no se usan librerias, salvo las del project setup (types, typescript, eslint, etc.).
                 
-                    pago? <PagoPage />
+                    pago? <PagoPage pago={pago} idUsuario={usuario.id} setPago={setPago}/>
                     :
                         prodCompra? <CompraPage prodCompra={prodCompra} setProdCompra={setProdCompra} setPago={setPago} usuario={usuario} setErrMsj={setErrMsj}/>
                         :
