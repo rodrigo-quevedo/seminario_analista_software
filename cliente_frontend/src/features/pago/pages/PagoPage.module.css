@@ -1,0 +1,30 @@
+
+.volverButtonPosition{
+    position: absolute;
+    left: 100px;
+
+    z-index: 10;
+}
+
+.container{
+    display: flex;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    width: 90%;
+    margin: 0 auto;
+}
+
+
+.formulario {
+    flex: 2;
+
+    margin-top: 2vh;
+}
+
+.infoProducto {
+    flex: 1;
+
+    margin-top: 8vh;
+}
