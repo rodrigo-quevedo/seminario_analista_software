@@ -5,14 +5,16 @@ import app from './app';
 import {conectarBD} from '@config/db';
 import productosDemo from './demo/productosDemo';
 import usuariosDemo from './demo/usuariosDemo';
+import { AddressInfo } from 'net';
 
 conectarBD();
 productosDemo();
 usuariosDemo();
 
-const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+
+let server = app.listen(0, () => {
+  const address = server.address() as AddressInfo;
+  console.log(`Server is running on port ${address.port}`);
   console.log('env variable test: ', process.env.MI_VARIABLE)
 });
