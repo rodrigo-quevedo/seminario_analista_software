@@ -56,3 +56,9 @@
 .rowTotal span {
     font-size: 30px;
 }
+
+.pagoInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}

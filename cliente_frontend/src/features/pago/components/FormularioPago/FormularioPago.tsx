@@ -1,16 +1,17 @@
 import { Payment } from "@mercadopago/sdk-react";
 import styles from "./FormularioPago.module.css"
-import { customization, initialization, onError, onReady } from "../../utils/MercadoPagoConfig";
+import { customization, initialization, onError } from "../../utils/MercadoPagoConfig";
 import { postPago } from "../../api/postPago";
 
 
 type Props = {
     total: number,
-    idUsuario: string
+    idUsuario: string,
+    setBrickLoading: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 
-export default function FormularioPago({total, idUsuario}: Props){
+export default function FormularioPago({total, idUsuario, setBrickLoading}: Props){
     
     return (
         <section className={styles.container} >
@@ -19,7 +20,7 @@ export default function FormularioPago({total, idUsuario}: Props){
                 initialization={initialization(total)}
                 customization={customization}
                 onSubmit={postPago}
-                onReady={onReady}
+                onReady={()=>setBrickLoading(false)}
                 onError={onError}
             />
             

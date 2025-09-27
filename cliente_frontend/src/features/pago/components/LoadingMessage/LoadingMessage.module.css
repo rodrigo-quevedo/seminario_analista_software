@@ -1,0 +1,20 @@
+
+.container {
+    min-height: 50vh;
+    
+    margin-top: 3em;
+    
+    color: #444;
+    font-size: 1.5em;
+
+    animation: pulse-kf 2s infinite;
+}
+
+@keyframes pulse-kf {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.2;
+    }
+}

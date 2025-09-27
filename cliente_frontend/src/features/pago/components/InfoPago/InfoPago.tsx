@@ -3,11 +3,12 @@ import styles from "./InfoPago.module.css"
 type Props = {
     imgUrl: string,
     nombreProducto: string,
-    total: number
+    total: number,
+    cantidad: number
 }
 
 
-export default function InfoPago({imgUrl, nombreProducto, total}: Props){
+export default function InfoPago({imgUrl, nombreProducto, total, cantidad}: Props){
 
     return (
         <section className={styles.container}>
@@ -16,7 +17,11 @@ export default function InfoPago({imgUrl, nombreProducto, total}: Props){
                 <div className={styles.imgContainer}>
                     <img src={imgUrl} alt={nombreProducto} />
                 </div>
-                <span>{nombreProducto}</span>
+
+                <div className={styles.pagoInfo}>
+                    <span>{nombreProducto}</span>
+                    <span>x{cantidad}</span>
+                </div>
             </div>
             
             <div className={`${styles.row} ${styles.rowTotal}`}>

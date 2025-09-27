@@ -1,3 +1,7 @@
+.loading {
+    cursor: wait;
+}
+
 
 .volverButtonPosition{
     position: absolute;
