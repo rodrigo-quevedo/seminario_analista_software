@@ -1,13 +1,21 @@
 
 .container {
+    border-radius: 20px;
+    
     min-height: 50vh;
+    padding: 10px;
+    background: #ccc;
     
     margin-top: 3em;
     
-    color: #444;
     font-size: 1.5em;
 
     animation: pulse-kf 2s infinite;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
 
 @keyframes pulse-kf {

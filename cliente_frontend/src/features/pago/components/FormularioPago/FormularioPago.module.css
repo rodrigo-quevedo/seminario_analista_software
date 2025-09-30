@@ -3,4 +3,8 @@
       font-family: Arial, sans-serif; 
 }
 
+.container h2, .container label {
+    margin: 10px 0 !important;
+    font-size: 1em !important;
+}
 

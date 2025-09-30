@@ -1,6 +1,6 @@
 import { Payment } from "@mercadopago/sdk-react";
 import styles from "./FormularioPago.module.css"
-import { customization, initialization, onError } from "../../utils/MercadoPagoConfig";
+import { customization, initialization, onError } from "../../utils/mercadoPagoConfig";
 import { postPago } from "../../api/postPago";
 
 
