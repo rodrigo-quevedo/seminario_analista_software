@@ -1,10 +1,14 @@
 import type { IBrickError } from "@mercadopago/sdk-react/esm/bricks/util/types/common";
 import type { IPaymentBrickCustomization } from "@mercadopago/sdk-react/esm/bricks/payment/type";
 
-export const initialization = (total: number) =>{
+export const initialization = (total: number)=>{
     return {
-        amount: total //sirve para mostrar el total en la UI del formulario, pero no se envia al backend
-    };
+        amount: total, 
+        payer: {
+            identification: { type: "DNI", number: "12345678" },
+        }
+    }
+
 } 
 
 

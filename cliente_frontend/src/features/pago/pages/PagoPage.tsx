@@ -6,6 +6,7 @@ import InfoProducto from "../components/InfoPago/InfoPago"
 
 import styles from './PagoPage.module.css'
 import LoadingMessage from "../components/LoadingMessage/LoadingMessage"
+import TarjetaDemo from "../components/TarjetaDemo/TarjetaDemo"
 
 type Props = {
     pago: Pago
@@ -15,8 +16,6 @@ type Props = {
 }
 
 export default function PagoPage({pago, idUsuario, setPago}: Props){
-    // console.log("urlFoto:", pago.producto.urlFoto)
-    
     const [brickLoading, setBrickLoading] = useState<boolean>(true);
     
 
@@ -33,7 +32,7 @@ export default function PagoPage({pago, idUsuario, setPago}: Props){
             {brickLoading && <LoadingMessage/>}
 
             <FormularioPago 
-                total={pago.cantidad * pago.producto.precioUnitario - pago.descuento}
+                pago={pago}
                 idUsuario={idUsuario}
                 setBrickLoading={setBrickLoading}
             />
@@ -47,6 +46,9 @@ export default function PagoPage({pago, idUsuario, setPago}: Props){
                 total={pago.cantidad * pago.producto.precioUnitario - pago.descuento}
                 cantidad={pago.cantidad}
             />
+
+            <TarjetaDemo/>
+
         </div>
     </div>
     )
