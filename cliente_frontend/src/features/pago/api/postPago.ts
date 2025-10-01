@@ -1,6 +1,7 @@
 import type { ICardPaymentBrickPayer, ICardPaymentFormData } from "@mercadopago/sdk-react/esm/bricks/cardPayment/type";
 import type { IFormDataAdditionalInfo, ISavedCardPayer, TicketFormData } from "@mercadopago/sdk-react/esm/bricks/payment/type";
 import type { Pago } from "../../../types/pago";
+import type CompraExitosa from "../../../types/compra";
 
 
 type Props = {
@@ -29,6 +30,9 @@ export const postPago = async ({formData, idUsuario, pago}: Props) => {
     .then((response) => response.json())
     .then((response) => {
         // recibir el resultado del pago
+        const compraExitosa = response.compraExitosa as CompraExitosa;
+
+        
         
     })
     .catch((error) => {

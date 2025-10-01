@@ -12,7 +12,7 @@ export default function TarjetaDemo(){
     return (
         <section className={styles.container}>
 
-            <h1>Tarjeta con datos de prueba:</h1>
+            <h1>Datos de tarjeta de prueba:</h1>
 
             <div className={`${styles.row} ${styles.rowProducto}`}>
                 <div>Número de tarjeta:</div>

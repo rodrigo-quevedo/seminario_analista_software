@@ -10,6 +10,7 @@ import CompraPage from "./features/producto/pages/CompraPage";
 import type { Usuario } from "./types/usuario";
 import ErrorPage from "./features/Error/pages/ErrorPage";
 import useInitMercadoPago from "./hooks/useInitMercadoPago";
+import type CompraExitosa from "./types/compra";
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
     const [prodDetalle, setProdDetalle] = useState<Producto|null>(null);
     const [prodCompra, setProdCompra] = useState<Producto|null>(null);
     const [pago, setPago] = useState<Pago|null>(null);
+    const [compraExitosa, setCompraExitosa] = useState<CompraExitosa|null>(null);
 
     const [errMsj, setErrMsj] = useState<string|null>(null);
 
@@ -39,13 +41,14 @@ function App() {
                 // Es una solucion mala, altamente mejorable con la libreria react router, y solo sirve para una primera iteracion del prototipo.
                 // Aclaracion: Para esta primera iteracion no se usan librerias, salvo las del project setup (types, typescript, eslint, etc.).
                 
-                    pago? <PagoPage pago={pago} idUsuario={usuario.id} setPago={setPago}/>
-                    :
-                        prodCompra? <CompraPage prodCompra={prodCompra} setProdCompra={setProdCompra} setPago={setPago} usuario={usuario} setErrMsj={setErrMsj}/>
+                    // compraExitosa? 
+                        pago? <PagoPage pago={pago} idUsuario={usuario.id} setPago={setPago}/>
                         :
-                            prodDetalle? <DetallePage prodDetalle={prodDetalle} setProdDetalle={setProdDetalle} setProdCompra={setProdCompra}/>
+                            prodCompra? <CompraPage prodCompra={prodCompra} setProdCompra={setProdCompra} setPago={setPago} usuario={usuario} setErrMsj={setErrMsj}/>
                             :
-                                <CatalogoPage productos={productos} carga={carga} error={error} setProdDetalle={setProdDetalle} setErrMsj={setErrMsj}/>
+                                prodDetalle? <DetallePage prodDetalle={prodDetalle} setProdDetalle={setProdDetalle} setProdCompra={setProdCompra}/>
+                                :
+                                    <CatalogoPage productos={productos} carga={carga} error={error} setProdDetalle={setProdDetalle} setErrMsj={setErrMsj}/>
             }
         </MainLayout>
     </>
