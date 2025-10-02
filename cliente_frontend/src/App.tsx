@@ -11,6 +11,7 @@ import type { Usuario } from "./types/usuario";
 import ErrorPage from "./features/Error/pages/ErrorPage";
 import useInitMercadoPago from "./hooks/useInitMercadoPago";
 import type CompraExitosa from "./types/compra";
+import MsjCompraExitosa from "./features/MsjCompraExitosa/components/MsjCompraExitosaSection";
 
 
 function App() {
@@ -41,8 +42,10 @@ function App() {
                 // Es una solucion mala, altamente mejorable con la libreria react router, y solo sirve para una primera iteracion del prototipo.
                 // Aclaracion: Para esta primera iteracion no se usan librerias, salvo las del project setup (types, typescript, eslint, etc.).
                 
-                    // compraExitosa? 
-                        pago? <PagoPage pago={pago} idUsuario={usuario.id} setPago={setPago}/>
+                compraExitosa? <MsjCompraExitosa compraExitosa={compraExitosa}/> :
+                    
+
+                        pago? <PagoPage pago={pago} idUsuario={usuario.id} setPago={setPago} setCompraExitosa={setCompraExitosa} setErrMsj={setErrMsj}/>
                         :
                             prodCompra? <CompraPage prodCompra={prodCompra} setProdCompra={setProdCompra} setPago={setPago} usuario={usuario} setErrMsj={setErrMsj}/>
                             :

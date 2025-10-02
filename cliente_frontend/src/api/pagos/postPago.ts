@@ -1,7 +1,8 @@
 import type { ICardPaymentBrickPayer, ICardPaymentFormData } from "@mercadopago/sdk-react/esm/bricks/cardPayment/type";
 import type { IFormDataAdditionalInfo, ISavedCardPayer, TicketFormData } from "@mercadopago/sdk-react/esm/bricks/payment/type";
-import type { Pago } from "../../../types/pago";
-import type CompraExitosa from "../../../types/compra";
+import type { Pago } from "../../types/pago";
+import type CompraExitosa from "../../types/compra";
+import type { ErrorResponse } from "../../types/ErrorResponse";
 
 
 type Props = {
@@ -10,11 +11,13 @@ type Props = {
     pago: Pago
 }
 
-const API_URL = import.meta.env.VITE_URL_API
 
 // callback llamado al hacer clic en el botón enviar datos
-export const postPago = async ({formData, idUsuario, pago}: Props) => {
-     fetch(API_URL+"/pagos", {
+export const postPago = async ({formData, idUsuario, pago}: Props): Promise<CompraExitosa|ErrorResponse>  => {
+    
+    const API_URL = import.meta.env.VITE_URL_API;
+
+    const result = await fetch(API_URL+"/pagos", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -27,17 +30,13 @@ export const postPago = async ({formData, idUsuario, pago}: Props) => {
             descuento: pago.descuento
         })
     })
-    .then((response) => response.json())
-    .then((response) => {
-        // recibir el resultado del pago
-        const compraExitosa = response.compraExitosa as CompraExitosa;
 
-        
-        
-    })
-    .catch((error) => {
-        // manejar la respuesta de error al intentar crear el pago
-        
-    });
+    if (!result.ok) 
+        return result.json()
+            .then((body: ErrorResponse)=>body)
+            .catch((err)=>err);
 
+    return result.json()
+        .then((body:Pago)=>body)
+        .catch((err)=>err);
 };

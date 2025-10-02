@@ -7,15 +7,19 @@ import InfoProducto from "../components/InfoPago/InfoPago"
 import styles from './PagoPage.module.css'
 import LoadingMessage from "../components/LoadingMessage/LoadingMessage"
 import TarjetaDemo from "../components/TarjetaDemo/TarjetaDemo"
+import type CompraExitosa from "../../../types/compra"
 
 type Props = {
     pago: Pago
     idUsuario: string,
 
-    setPago : React.Dispatch<React.SetStateAction<Pago | null>>
+    setPago : React.Dispatch<React.SetStateAction<Pago | null>>,
+
+    setCompraExitosa: React.Dispatch<React.SetStateAction<CompraExitosa | null>>,
+    setErrMsj: React.Dispatch<React.SetStateAction<string | null>>
 }
 
-export default function PagoPage({pago, idUsuario, setPago}: Props){
+export default function PagoPage({pago, idUsuario, setPago, setCompraExitosa, setErrMsj}: Props){
     const [brickLoading, setBrickLoading] = useState<boolean>(true);
     
 
@@ -35,6 +39,9 @@ export default function PagoPage({pago, idUsuario, setPago}: Props){
                 pago={pago}
                 idUsuario={idUsuario}
                 setBrickLoading={setBrickLoading}
+
+                setCompraExitosa={setCompraExitosa}
+                setErrMsj={setErrMsj}
             />
             
         </div>

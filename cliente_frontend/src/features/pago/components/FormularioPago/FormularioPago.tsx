@@ -1,19 +1,24 @@
 import { Payment } from "@mercadopago/sdk-react";
 import styles from "./FormularioPago.module.css"
 import { customization, initialization, onError } from "../../utils/mercadoPagoConfig";
-import { postPago } from "../../api/postPago";
+import { postPago } from "../../../../api/pagos/postPago";
 import type { DatosCompra, Pago } from "../../../../types/pago";
+import type CompraExitosa from "../../../../types/compra";
+import type { ErrorResponse } from "../../../../types/ErrorResponse";
 
 
 type Props = {
     pago: Pago,
     idUsuario: string,
-    setBrickLoading: React.Dispatch<React.SetStateAction<boolean>>
+    setBrickLoading: React.Dispatch<React.SetStateAction<boolean>>,
+    
+    setCompraExitosa: React.Dispatch<React.SetStateAction<CompraExitosa | null>>,
+    setErrMsj: React.Dispatch<React.SetStateAction<string | null>>
 }
 
 type PagoReqBody = DatosCompra & {idUsuario: string};
 
-export default function FormularioPago({pago, idUsuario, setBrickLoading}: Props){
+export default function FormularioPago({pago, idUsuario, setBrickLoading, setCompraExitosa, setErrMsj}: Props){
     
     const API_URL = import.meta.env.VITE_URL_API;
 
@@ -25,7 +30,17 @@ export default function FormularioPago({pago, idUsuario, setBrickLoading}: Props
             <Payment
                 initialization={initialization(total)}
                 customization={customization}
-                onSubmit={async ({formData})=>{postPago({formData, idUsuario, pago})}}
+                onSubmit={async ({formData})=>{
+                    let result = await postPago({formData, idUsuario, pago})
+
+                    let error = result as ErrorResponse;
+                    if (error.name && error.descripcion){
+                        setErrMsj(`${error.name}: ${error.descripcion}`);
+                        return;
+                    }
+
+                    setCompraExitosa(result as CompraExitosa);
+                }}
                 onReady={()=>setBrickLoading(false)}
                 onError={onError}
             />
