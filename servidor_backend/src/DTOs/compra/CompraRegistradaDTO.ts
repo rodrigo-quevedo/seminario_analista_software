@@ -5,11 +5,13 @@ import Compra from "@customTypes/entities/Compra";
 export default class CompraRegistradaDTO {
     
     compra: Compra;
+    urlFotoProducto: string;
     nombreProducto: string;
     total: number;
 
-    constructor(compra: Compra, nombreProducto: string, total: number){
+    constructor(compra: Compra, urlFotoProducto: string, nombreProducto: string, total: number){
         this.compra = compra;
+        this.urlFotoProducto = urlFotoProducto;
         this.nombreProducto = nombreProducto;
         this.total = total;
     }

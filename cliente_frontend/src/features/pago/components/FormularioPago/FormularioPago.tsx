@@ -16,11 +16,7 @@ type Props = {
     setErrMsj: React.Dispatch<React.SetStateAction<string | null>>
 }
 
-type PagoReqBody = DatosCompra & {idUsuario: string};
-
 export default function FormularioPago({pago, idUsuario, setBrickLoading, setCompraExitosa, setErrMsj}: Props){
-    
-    const API_URL = import.meta.env.VITE_URL_API;
 
     const total = pago.cantidad * pago.producto.precioUnitario - pago.descuento;
 

@@ -22,7 +22,9 @@ export const postPago = async ({formData, idUsuario, pago}: Props): Promise<Comp
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify({...formData, 
+        body: JSON.stringify({
+            ...formData, 
+            
             idUsuario,
 
             idProducto: pago.producto.id,
