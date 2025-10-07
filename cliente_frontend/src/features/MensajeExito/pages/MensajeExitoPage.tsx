@@ -1,5 +1,4 @@
 import type { JSX } from "react";
-import type CompraExitosa from "../../../types/compra";
 import MensajeExitoSection from "../components/MensajeExitoSection";
 
 type Props = {

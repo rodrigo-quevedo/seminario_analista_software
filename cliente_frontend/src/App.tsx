@@ -12,16 +12,30 @@ import ErrorPage from "./features/Error/pages/ErrorPage";
 import useInitMercadoPago from "./hooks/useInitMercadoPago";
 import type CompraExitosa from "./types/compra";
 import MensajeExitoPage from "./features/MensajeExito/pages/MensajeExitoPage";
+import CompraExitosaMsj from "./features/MensajeExito/components/CompraExitosaMsj/CompraExitosaMsj";
 
+
+const compraDemo = {
+    idProducto: "68b0e156cb788aabf456e0d4",
+    idUsuario: "68910d946f86ddfab00be367",
+    idPago: 1324990126,
+    cantidad: 1,
+    precioUnitario: 26300,
+    descuento: 0,
+    fechaHora: new Date("2025-10-07T05:01:55.056Z"),
+    id: "68e49ec3854370e38a88d002",    
+    urlFotoProducto: "10603.jpg",
+    nombreProducto: "Gorra negra Rivalon",
+    total: 26300
+}
 
 function App() {
-  
     const { productos, carga, error } = useBuscarProductos();
 
     const [prodDetalle, setProdDetalle] = useState<Producto|null>(null);
     const [prodCompra, setProdCompra] = useState<Producto|null>(null);
     const [pago, setPago] = useState<Pago|null>(null);
-    const [compraExitosa, setCompraExitosa] = useState<CompraExitosa|null>(null);
+    const [compraExitosa, setCompraExitosa] = useState<CompraExitosa|null>(compraDemo);
 
     const [errMsj, setErrMsj] = useState<string|null>(null);
 
@@ -51,16 +65,7 @@ function App() {
                         setProdCompra(null);
                         setProdDetalle(null);
                     }}
-                    children={
-                        <div>
-                            <div>
-                                <img src={compraExitosa.urlFotoProducto} />
-                                <span>{compraExitosa.nombreProducto}</span>
-                            </div>
-                            <span>TOTAL: {compraExitosa.total}</span>
-                            
-                        </div>
-                    }
+                    children={<CompraExitosaMsj nombreProducto={compraExitosa.nombreProducto} urlFotoProducto={compraExitosa.urlFotoProducto} total={compraExitosa.total} cantidad={compraExitosa.cantidad} />}
                 /> :
                     
 

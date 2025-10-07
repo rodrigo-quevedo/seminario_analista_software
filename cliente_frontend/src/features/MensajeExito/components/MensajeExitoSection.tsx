@@ -16,12 +16,9 @@ export default function MensajeExitoSection({msjExito, handler, children}: Props
             
             <div className={styles.card_container}>
                 
-                <div>
-                    {children}
-                </div>
-
-
                 <div className={styles.card_info_container}>
+                    {children}
+
                     <img src={successIcon} alt="Operación exitosa"/>
                     
                     <p>{msjExito}</p>

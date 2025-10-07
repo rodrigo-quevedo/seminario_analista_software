@@ -28,6 +28,6 @@ export async function hacerPagoController(req: RequestAutenticada, res: Response
 
 
 
-    res.json({compraRegistrada: new CompraRegistradaDTO(compraRegistrada, producto.urlFoto, producto.nombre, totalCalculado)});
+    res.json(new CompraRegistradaDTO(compraRegistrada, producto.urlFoto, producto.nombre, totalCalculado));
 
 }
