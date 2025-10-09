@@ -30,12 +30,12 @@ const compraDemo = {
 }
 
 function App() {
-    const { productos, carga, error } = useBuscarProductos();
+    const { productos, carga, error, reloadProductos } = useBuscarProductos();
 
     const [prodDetalle, setProdDetalle] = useState<Producto|null>(null);
     const [prodCompra, setProdCompra] = useState<Producto|null>(null);
     const [pago, setPago] = useState<Pago|null>(null);
-    const [compraExitosa, setCompraExitosa] = useState<CompraExitosa|null>(compraDemo);
+    const [compraExitosa, setCompraExitosa] = useState<CompraExitosa|null>(null);
 
     const [errMsj, setErrMsj] = useState<string|null>(null);
 
@@ -64,6 +64,8 @@ function App() {
                         setPago(null);
                         setProdCompra(null);
                         setProdDetalle(null);
+                        useBuscarProductos();
+                        reloadProductos();
                     }}
                     children={<CompraExitosaMsj nombreProducto={compraExitosa.nombreProducto} urlFotoProducto={compraExitosa.urlFotoProducto} total={compraExitosa.total} cantidad={compraExitosa.cantidad} />}
                 /> :
