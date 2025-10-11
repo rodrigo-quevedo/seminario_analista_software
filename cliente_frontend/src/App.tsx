@@ -1,0 +1,80 @@
+import { useState } from "react";
+import useBuscarProductos from "./hooks/useBuscarProductos";
+import MainLayout from "./layouts/MainLayout"
+import CatalogoPage from "./features/producto/pages/CatalogoPage"
+import type { Producto } from "./types/producto";
+import DetallePage from "./features/producto/pages/DetallePage";
+import type { Pago } from "./types/pago";
+import PagoPage from "./features/pago/pages/PagoPage";
+import CompraPage from "./features/producto/pages/CompraPage";
+import type { Usuario } from "./types/usuario";
+import ErrorPage from "./features/Error/pages/ErrorPage";
+import useInitMercadoPago from "./hooks/useInitMercadoPago";
+import type CompraExitosa from "./types/compra";
+import MensajeExitoPage from "./features/MensajeExito/pages/MensajeExitoPage";
+import CompraExitosaMsj from "./features/MensajeExito/components/CompraExitosaMsj/CompraExitosaMsj";
+
+
+
+
+function App() {
+    const { productos, carga, error, setReloadKey } = useBuscarProductos();
+
+    const [prodDetalle, setProdDetalle] = useState<Producto|null>(null);
+    const [prodCompra, setProdCompra] = useState<Producto|null>(null);
+    const [pago, setPago] = useState<Pago|null>(null);
+    const [compraExitosa, setCompraExitosa] = useState<CompraExitosa|null>(null);
+
+    const [errMsj, setErrMsj] = useState<string|null>(null);
+
+    //auth: usuario hardcodeado
+    const usuarioDemo: Usuario = {
+        id: "68910d946f86ddfab00be367",//es una ID que copiada manualmente de la base de datos
+        puntos: 4500
+    }
+    const [usuario, setUsuario] = useState(usuarioDemo);
+
+    useInitMercadoPago();
+
+    return (
+    <>
+        <MainLayout>
+            {
+                errMsj? <ErrorPage errMsj={errMsj} setErrMsj={setErrMsj} /> :
+                // Esta es una solución a la navegación entre paginas sin utilizar react router.
+                // Es una solucion mala, altamente mejorable con la libreria react router, y solo sirve para una primera iteracion del prototipo.
+                // Aclaracion: Para esta primera iteracion no se usan librerias, salvo las del project setup (types, typescript, eslint, etc.).
+                
+                compraExitosa? 
+                <MensajeExitoPage 
+                    msjExito="Pago realizado con éxito" 
+                    handler={()=>{
+                        setUsuario(prev => {return {...prev, puntos: prev.puntos - compraExitosa.compra.descuento}});
+
+                        setReloadKey(prev => prev+1);
+                        
+                        
+                        setPago(null);
+                        setProdCompra(null);
+                        setProdDetalle(null);
+                        
+                        setCompraExitosa(null);
+                    }}
+                    children={<CompraExitosaMsj nombreProducto={compraExitosa.nombreProducto} urlFotoProducto={compraExitosa.urlFotoProducto} total={compraExitosa.total} cantidad={compraExitosa.compra.cantidad} />}
+                /> :
+                    
+
+                        pago? <PagoPage pago={pago} idUsuario={usuario.id} setPago={setPago} setCompraExitosa={setCompraExitosa} setErrMsj={setErrMsj}/>
+                        :
+                            prodCompra? <CompraPage prodCompra={prodCompra} setProdCompra={setProdCompra} setPago={setPago} usuario={usuario} setErrMsj={setErrMsj}/>
+                            :
+                                prodDetalle? <DetallePage prodDetalle={prodDetalle} setProdDetalle={setProdDetalle} setProdCompra={setProdCompra}/>
+                                :
+                                    <CatalogoPage productos={productos} carga={carga} error={error} setProdDetalle={setProdDetalle} setErrMsj={setErrMsj}/>
+            }
+        </MainLayout>
+    </>
+    )
+}
+
+export default App

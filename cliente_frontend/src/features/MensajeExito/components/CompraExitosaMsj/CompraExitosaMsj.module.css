@@ -1,0 +1,47 @@
+.container{
+    font-weight: 700;
+    width: 100%;
+}
+
+.infoTop {
+    width: 100%;
+
+    border-bottom: 1px solid #000;
+    
+    display: flex;
+    align-items: center;
+    
+
+    padding-bottom: 20px;
+}
+
+.infoBottom {
+    display: flex;
+    justify-content: space-between;
+
+    padding-top: 10px;
+
+    font-size: 30px;
+}
+
+.fotoProd {
+    max-width: var(--msj-exito-img-prod-size);
+    width: var(--msj-exito-img-prod-size);
+    max-height: var(--msj-exito-img-prod-size);
+    height: var(--msj-exito-img-prod-size);
+
+    border-radius: 50%;
+
+    object-fit: cover;
+}
+
+.textoContainer{
+    padding-left: 15px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    gap: 5px;
+    
+    font-size: 16px;
+}

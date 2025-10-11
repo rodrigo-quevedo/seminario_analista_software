@@ -9,5 +9,9 @@ export function errorHandler(e:Error, req: Request, res: Response, next: NextFun
     console.log(e);
 
     res.status(customError.statusCode || 500);
-    res.send("Error: "+ e.name + ". Descripcion: " + e.message);
+    // res.send("Error: "+ e.name + ". Descripcion: " + e.message);
+    res.json({
+        name: e.name,
+        descripcion: e.message
+    });
 }

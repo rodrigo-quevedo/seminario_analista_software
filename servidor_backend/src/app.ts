@@ -7,6 +7,7 @@ import {logTime} from "@middlewares/logTime";
 import {errorHandler} from "@middlewares/errorHandler";
 import router from '@routes/index';
 import cors from "@middlewares/cors";
+import { requireJsonContent } from "@middlewares/requireJsonContent";
 
 
 
@@ -15,6 +16,7 @@ const app = express();
 app.use(cors);
 app.use(logTime); // Mostrar fechahora en que la request llega al servidor
 app.use(express.json());//Parsear el req.body, es obligatorio que venga en formato JSON
+app.use(requireJsonContent);
 
 app.use(router); // Manejar endpoints de la API
 

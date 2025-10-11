@@ -1,0 +1,37 @@
+/* src/index.css */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  /* variables */
+  --msj-exito-img-prod-size: 55px;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #fff;
+  color: #000;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+
+/* button */
+
+button:hover {
+    cursor: pointer;
+
+    transform: scale(1.02);
+    
+    box-shadow: 1px 1px 10px #000;
+    
+    transition: 0.3s all;
+}

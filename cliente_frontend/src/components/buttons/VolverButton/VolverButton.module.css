@@ -1,0 +1,16 @@
+.volverButton{
+    padding: 5px 10px;
+    
+    border-radius: 3px;
+    border: 1px solid #000;
+
+    background: #fff;
+
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.volverButton img {
+    width: 20px;
+}

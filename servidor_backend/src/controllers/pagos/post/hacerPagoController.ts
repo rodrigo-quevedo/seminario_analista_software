@@ -6,6 +6,7 @@ import getProductoService from "@services/productos/getProductoService";
 import verificarCompraService from "@services/compras/verificarCompraService";
 import calcularTotalCompraService from "@services/compras/calcularTotalCompraService";
 import gestionarTotalCompraOrchestrator from "../../../orchestrators/gestionarTotalCompraOrchestrator";
+import CompraRegistradaDTO from "../../../DTOs/compra/CompraRegistradaDTO";
 
 
 export async function hacerPagoController(req: RequestAutenticada, res: Response) {
@@ -26,6 +27,7 @@ export async function hacerPagoController(req: RequestAutenticada, res: Response
     const compraRegistrada = await gestionarTotalCompraOrchestrator({totalCalculado, descuentoAplicado, producto, usuario, datosCompra});
 
 
-    res.json({compraRegistrada});
+
+    res.json(new CompraRegistradaDTO(compraRegistrada, producto.urlFoto, producto.nombre, totalCalculado));
 
 }
