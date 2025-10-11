@@ -15,19 +15,7 @@ import MensajeExitoPage from "./features/MensajeExito/pages/MensajeExitoPage";
 import CompraExitosaMsj from "./features/MensajeExito/components/CompraExitosaMsj/CompraExitosaMsj";
 
 
-const compraDemo = {
-    idProducto: "68b0e156cb788aabf456e0d4",
-    idUsuario: "68910d946f86ddfab00be367",
-    idPago: 1324990126,
-    cantidad: 1,
-    precioUnitario: 26300,
-    descuento: 0,
-    fechaHora: new Date("2025-10-07T05:01:55.056Z"),
-    id: "68e49ec3854370e38a88d002",    
-    urlFotoProducto: "10603.jpg",
-    nombreProducto: "Gorra negra Rivalon",
-    total: 26300
-}
+
 
 function App() {
     const { productos, carga, error, setReloadKey } = useBuscarProductos();
@@ -40,10 +28,11 @@ function App() {
     const [errMsj, setErrMsj] = useState<string|null>(null);
 
     //auth: usuario hardcodeado
-    const usuario: Usuario = {
+    const usuarioDemo: Usuario = {
         id: "68910d946f86ddfab00be367",//es una ID que copiada manualmente de la base de datos
         puntos: 4500
     }
+    const [usuario, setUsuario] = useState(usuarioDemo);
 
     useInitMercadoPago();
 
@@ -60,6 +49,8 @@ function App() {
                 <MensajeExitoPage 
                     msjExito="Pago realizado con éxito" 
                     handler={()=>{
+                        setUsuario(prev => {return {...prev, puntos: prev.puntos - compraExitosa.compra.descuento}});
+
                         setReloadKey(prev => prev+1);
                         
                         
