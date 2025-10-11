@@ -16,6 +16,7 @@ type Props = {
 
 export default function Catalogo({prodDetalle, setProdDetalle, setProdCompra}: Props){
 
+    const oracionesArr = prodDetalle.descripcion.split(". ");
 
     return (
         <section className={styles.container}>
@@ -33,11 +34,13 @@ export default function Catalogo({prodDetalle, setProdDetalle, setProdCompra}: P
             <div className={styles.detalleContainer}>
                 <h1>{prodDetalle.nombre}</h1>
 
-                {/* <p>{prodDetalle.descripcion}</p> */}
                 <div className={styles.descripcion}>
-                    {prodDetalle.descripcion
-                        .split(". ")
-                        .map(oracion => <p className={styles.oracionDescripcion}>{oracion}</p>)
+                    {oracionesArr
+                        .map((oracion, i) => 
+                            <p className={styles.oracionDescripcion} key={i}>
+                                {oracion}{i===oracionesArr.length-1? "":"."}
+                            </p>
+                        )
                     }
                 </div>
 

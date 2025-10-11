@@ -11,8 +11,7 @@ export interface VerificarCompraError {
     descripcion: string
 }
 
-
-export default interface CompraExitosa {
+export default interface Compra {
     id: string,
 
     idPago: number | null, //null: descuento (puntos) aplicado = total, no se realiza pago, solo se descuentan los puntos
@@ -25,6 +24,10 @@ export default interface CompraExitosa {
     descuento: number//float, 2 decimales
     
     fechaHora: Date,
+}
+
+export default interface CompraExitosa {
+    compra: Compra,
 
     urlFotoProducto: string,
     nombreProducto: string,

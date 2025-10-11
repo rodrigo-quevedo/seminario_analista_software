@@ -13,9 +13,6 @@ export default function useBuscarProductos(){
     const [carga, setCarga] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
-    function reloadProductos() {
-        setReloadKey(prev=>prev++);
-    }
 
     useEffect(()=>{
         getProductos()
@@ -23,8 +20,8 @@ export default function useBuscarProductos(){
         
             .catch((err: Error)=>{setError(err.name +" : "+err.message)})
             
-            .finally(()=>{setCarga(false)})
+            .finally(()=>setCarga(false))
     }, [reloadKey]);
 
-    return {productos, carga, error, reloadProductos}
+    return {productos, carga, error, setReloadKey}
 }

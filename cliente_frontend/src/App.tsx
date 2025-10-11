@@ -30,7 +30,7 @@ const compraDemo = {
 }
 
 function App() {
-    const { productos, carga, error, reloadProductos } = useBuscarProductos();
+    const { productos, carga, error, setReloadKey } = useBuscarProductos();
 
     const [prodDetalle, setProdDetalle] = useState<Producto|null>(null);
     const [prodCompra, setProdCompra] = useState<Producto|null>(null);
@@ -60,14 +60,16 @@ function App() {
                 <MensajeExitoPage 
                     msjExito="Pago realizado con éxito" 
                     handler={()=>{
-                        setCompraExitosa(null);
+                        setReloadKey(prev => prev+1);
+                        
+                        
                         setPago(null);
                         setProdCompra(null);
                         setProdDetalle(null);
-                        useBuscarProductos();
-                        reloadProductos();
+                        
+                        setCompraExitosa(null);
                     }}
-                    children={<CompraExitosaMsj nombreProducto={compraExitosa.nombreProducto} urlFotoProducto={compraExitosa.urlFotoProducto} total={compraExitosa.total} cantidad={compraExitosa.cantidad} />}
+                    children={<CompraExitosaMsj nombreProducto={compraExitosa.nombreProducto} urlFotoProducto={compraExitosa.urlFotoProducto} total={compraExitosa.total} cantidad={compraExitosa.compra.cantidad} />}
                 /> :
                     
 
